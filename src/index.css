@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Fastcart Admin — Light theme */
+    --background: 214 33% 97%;        /* #F6F8FB */
+    --foreground: 222 47% 11%;        /* #0F172A */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 224 100% 59%;          /* #2F6BFF */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%;  /* #64748B */
+    --accent: 214 32% 91%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 51%;         /* #DC2626 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 89%;            /* #E2E8F0 */
+    --input: 214 32% 89%;
+    --ring: 224 100% 59%;
+    --radius: 0.5rem;
+    /* Sidebar */
+    --sidebar: 218 43% 16%;           /* #16223C */
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-accent: 224 100% 59%;   /* #2F6BFF */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 218 43% 22%;
+    /* Status */
+    --success: 142 71% 35%;           /* #16A34A */
+    --warning: 38 92% 50%;            /* #F59E0B */
+  }
+
+  .dark {
+    /* Fastcart Admin — Dark theme */
+    --background: 220 50% 9%;         /* #0B1220 */
+    --foreground: 210 40% 96%;
+    --card: 220 45% 13%;              /* #111A2E */
+    --card-foreground: 210 40% 96%;
+    --popover: 220 45% 13%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 224 100% 59%;          /* keep blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 45% 18%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 220 45% 18%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 220 45% 18%;
+    --accent-foreground: 210 40% 96%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 45% 18%;
+    --input: 220 45% 18%;
+    --ring: 224 100% 59%;
+    /* Sidebar dark */
+    --sidebar: 220 50% 8%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-accent: 224 100% 59%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 45% 13%;
+    /* Status */
+    --success: 142 71% 35%;
+    --warning: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Invisible scrollbar utility */
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

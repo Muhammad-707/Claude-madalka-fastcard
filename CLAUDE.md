@@ -210,8 +210,9 @@ VITE_DEFAULT_LANG=ru
 ---
 
 ## 📍 Последний чекпоинт
-- **Статус:** проект ещё не начат (Session 0).
-- **Следующий шаг:** написать `start` → Claude Code прочитает `ROADMAP.md` и начнёт с Фазы 1 (фундамент).
+- **Статус:** Фаза 1 завершена (Session 1, 2026-06-26).
+- **Что сделано:** Vite + React + TypeScript проект инициализирован вручную в корневой директории. Установлены все зависимости (RTK Query, react-router-dom, react-hook-form + zod, i18next, next-themes, sonner, recharts, lucide-react). Настроен Tailwind v3 с CSS-переменными (синяя палитра Fastcart: primary `#2F6BFF`, sidebar `#16223C`), alias `@/`, shadcn/ui (22 компонента в `src/shared/ui/`). Созданы `shared/api/baseApi.ts` (RTK Query + 401 guard), `shared/api/types.ts` (все типы из Swagger), `shared/lib/` (utils, jwt, getImageUrl, formatters). Заложена структура папок FSD. `type-check` ✅ `lint` ✅ 0 ошибок.
+- **Следующий шаг:** Фаза 2 — Redux store + i18n + провайдеры + роутер + Suspense.
 - **Прошлая сессия:** нет.
 
 ---

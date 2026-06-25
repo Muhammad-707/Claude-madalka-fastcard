@@ -26,11 +26,11 @@ flowchart LR
 ---
 
 ## Фаза 1 — Фундамент
-- [ ] Зависимости (docs/02), alias `@/`, `.env` / `.env.example`, `.gitignore`
-- [ ] Tailwind + CSS-переменные тем (синяя админ-палитра, docs/04) + шрифты
-- [ ] shadcn init + базовые компоненты (button, input, table, dialog, sheet, dropdown, select, checkbox, badge, skeleton, sonner, tabs, switch, form, avatar, pagination)
-- [ ] `shared/api/baseApi.ts` (RTK Query, prepareHeaders, 401) + `shared/api/types.ts` (docs/03, docs/07)
-- [ ] `shared/lib`: `getImageUrl`, `jwt`, форматтеры
+- [x] Зависимости (docs/02), alias `@/`, `.env` / `.env.example`, `.gitignore`
+- [x] Tailwind + CSS-переменные тем (синяя админ-палитра, docs/04) + шрифты
+- [x] shadcn init + базовые компоненты (button, input, table, dialog, sheet, dropdown, select, checkbox, badge, skeleton, sonner, tabs, switch, form, avatar, pagination)
+- [x] `shared/api/baseApi.ts` (RTK Query, prepareHeaders, 401) + `shared/api/types.ts` (docs/03, docs/07)
+- [x] `shared/lib`: `getImageUrl`, `jwt`, форматтеры
 
 ## Фаза 2 — App-каркас
 - [ ] Redux store + RTK Query middleware + hooks (docs/07)
