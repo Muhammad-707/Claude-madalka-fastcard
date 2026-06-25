@@ -33,19 +33,19 @@ flowchart LR
 - [x] `shared/lib`: `getImageUrl`, `jwt`, форматтеры
 
 ## Фаза 2 — App-каркас
-- [ ] Redux store + RTK Query middleware + hooks (docs/07)
-- [ ] i18n + словари ru/en/tj (docs/05)
-- [ ] Провайдеры (Redux, Theme, i18n, Router) в `app/providers`
-- [ ] Роутер + lazy + `<Suspense>` + глобальный `<ErrorBoundary>` (docs/11)
+- [x] Redux store + RTK Query middleware + hooks (docs/07)
+- [x] i18n + словари ru/en/tj (docs/05)
+- [x] Провайдеры (Redux, Theme, i18n, Router) в `app/providers`
+- [x] Роутер + lazy + `<Suspense>` + глобальный `<ErrorBoundary>` (docs/11)
 
 ## Фаза 3 — Системные компоненты (ДО страниц)
-- [ ] ErrorBoundary, PageLoader, NotFoundPage(404), EmptyState, NetworkError, ConfirmDialog, ProtectedRoute(adminOnly), Toaster (docs/11)
+- [x] ErrorBoundary, PageLoader, NotFoundPage(404), EmptyState, NetworkError, ConfirmDialog, ProtectedRoute(adminOnly), Toaster (docs/11)
 
 ## Фаза 4 — Auth + Layout
-- [ ] authApi (login) + authSlice + jwt-decode + проверка `role === 'Admin'` (docs/06)
-- [ ] Страница `/login` по макету `design-export` (split, eye-toggle, only admin)
-- [ ] `widgets/Sidebar` + `widgets/Header` (Topbar) + LangSwitcher + ThemeToggle (docs/04)
-- [ ] AdminLayout (Sidebar+Header+Outlet) для всех роутов кроме `/login`; ProtectedRoute подключён
+- [x] authApi (login) + authSlice + jwt-decode + проверка `role === 'Admin'` (docs/06)
+- [x] Страница `/login` по макету `design-export` (split, eye-toggle, only admin)
+- [x] `widgets/Sidebar` + `widgets/Header` (Topbar) + LangSwitcher + ThemeToggle (docs/04)
+- [x] AdminLayout (Sidebar+Header+Outlet) для всех роутов кроме `/login`; ProtectedRoute подключён
 
 ## Фаза 5 — Dashboard
 - [ ] productsApi, usersApi, categoriesApi, brandsApi, colorsApi (RTK Query)

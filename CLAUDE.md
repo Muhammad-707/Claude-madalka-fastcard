@@ -210,10 +210,10 @@ VITE_DEFAULT_LANG=ru
 ---
 
 ## 📍 Последний чекпоинт
-- **Статус:** Фаза 1 завершена (Session 1, 2026-06-26).
-- **Что сделано:** Vite + React + TypeScript проект инициализирован вручную в корневой директории. Установлены все зависимости (RTK Query, react-router-dom, react-hook-form + zod, i18next, next-themes, sonner, recharts, lucide-react). Настроен Tailwind v3 с CSS-переменными (синяя палитра Fastcart: primary `#2F6BFF`, sidebar `#16223C`), alias `@/`, shadcn/ui (22 компонента в `src/shared/ui/`). Созданы `shared/api/baseApi.ts` (RTK Query + 401 guard), `shared/api/types.ts` (все типы из Swagger), `shared/lib/` (utils, jwt, getImageUrl, formatters). Заложена структура папок FSD. `type-check` ✅ `lint` ✅ 0 ошибок.
-- **Следующий шаг:** Фаза 2 — Redux store + i18n + провайдеры + роутер + Suspense.
-- **Прошлая сессия:** нет.
+- **Статус:** Фазы 1–4 завершены (Session 1, 2026-06-26).
+- **Что сделано:** Фаза 1 — Vite+TS+Tailwind+shadcn+baseApi+types+utils. Фаза 2 — authSlice, Redux store, i18n (ru/en/tj), Providers (Redux+Theme), router с lazy+Suspense, global ErrorBoundary. Фаза 3 — PageLoader, EmptyState, NetworkError, ConfirmDialog, NotFoundPage, ProtectedRoute, Toaster. Фаза 4 — authApi (login mutation), loginPage (split-design, eye-toggle, only Admin), Sidebar (logo+nav+Other expandable+mobile drawer), Header (search+ThemeToggle+LangSwitcher+bell+user dropdown+logout), AdminLayout. `type-check` ✅ `lint` ✅ 0 ошибок.
+- **Следующий шаг:** Фаза 5 — Dashboard (RTK Query API слайсы + 3 карточки + recharts график + Top selling + Recent customers + Top by units).
+- **Прошлая сессия:** нет (все в одной).
 
 ---
 
