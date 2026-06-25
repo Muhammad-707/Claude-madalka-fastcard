@@ -88,4 +88,8 @@ flowchart LR
 - [?] «in/out stock» чекбокс для Users — у пользователей нет stock; используем фильтр по роли + чекбоксы строк для bulk-delete. Уточнить, если нужен иной смысл.
 
 ## Журнал решений
-- (пусто — `stop` дописывает)
+- **2026-06-26:** shadcn@latest создал папку `@/` вместо `src/` (проблема с alias на Windows). Файлы перемещены в `src/shared/ui/` вручную через PowerShell.
+- **2026-06-26:** ProtectedRoute создан в Фазе 2 (не Фазе 3), т.к. нужен для роутера. Фаза 3 дополнила системными UI-компонентами (EmptyState, NetworkError, ConfirmDialog, Toaster).
+- **2026-06-26:** AdminLayout — Sidebar фиксированный слева (240px, dark `#16223C`), Header справа от Sidebar (same dark bg). Единая тёмная шапка из двух виджетов.
+- **2026-06-26:** Login: поле подписано «Email» (по макету), отправляется как `userName` (по Swagger). Eye-toggle встроен в Input без отдельного shadcn компонента.
+- **2026-06-26:** ThemeToggle + LangSwitcher добавлены в Header аккуратно справа (не в макете, но требуется по CLAUDE.md).
