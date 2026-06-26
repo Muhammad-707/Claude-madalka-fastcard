@@ -90,6 +90,20 @@ export function useProductEdit() {
   const hasDiscount = form.watch('hasDiscount')
 
   const { data: categories } = useGetCategoriesQuery()
+
+  // Fix: if get-product-by-id doesn't return categoryId, derive it from subCategoryId
+  useEffect(() => {
+    if (!categories?.length || !product) return
+    if (form.getValues('categoryId') !== 0) return
+    const subCatId = product.subCategoryId ?? 0
+    if (!subCatId) return
+    const matched = categories.find((cat) =>
+      cat.subCategories.some((sc) => sc.id === subCatId),
+    )
+    if (matched) {
+      form.setValue('categoryId', matched.id, { shouldValidate: false, shouldDirty: false })
+    }
+  }, [categories, product, form])
   const { data: subCategories } = useGetSubCategoriesQuery(selectedCategoryId, {
     skip: selectedCategoryId === 0,
   })

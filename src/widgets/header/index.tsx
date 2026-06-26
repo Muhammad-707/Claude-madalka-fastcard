@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Search, Bell, LogOut, Menu } from 'lucide-react'
+import { Bell, LogOut, Menu } from 'lucide-react'
+import { GlobalSearch } from './GlobalSearch'
 import { toast } from 'sonner'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { logout, selectUser } from '@/features/auth/model/authSlice'
@@ -52,16 +53,8 @@ export function Header({ onMenuClick }: HeaderProps) {
         <Menu className="h-5 w-5" />
       </Button>
 
-      {/* Search */}
-      <div className="flex-1 max-w-md">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-sidebar-foreground/40 pointer-events-none" />
-          <input
-            placeholder={t('common.search')}
-            className="w-full h-9 pl-9 pr-4 rounded-lg bg-white/10 text-sidebar-foreground placeholder:text-sidebar-foreground/40 text-sm outline-none focus:bg-white/15 transition-colors"
-          />
-        </div>
-      </div>
+      {/* Global search */}
+      <GlobalSearch />
 
       <div className="flex items-center gap-1 ml-auto">
         {/* Theme toggle */}

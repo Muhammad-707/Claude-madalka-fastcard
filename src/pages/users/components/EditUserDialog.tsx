@@ -46,6 +46,13 @@ export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
     formState: { errors },
   } = useForm<EditUserFormValues>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      firstName: user?.firstName ?? '',
+      lastName: user?.lastName ?? '',
+      email: user?.email ?? '',
+      phoneNumber: user?.phoneNumber ?? '',
+      dob: user?.dob ? user.dob.split('T')[0] : '',
+    },
   })
 
   useEffect(() => {

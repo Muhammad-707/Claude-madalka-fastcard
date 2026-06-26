@@ -42,7 +42,7 @@ export default function CategoriesPage() {
   return (
     <div className="p-6 space-y-6">
       {/* Tabs + Add button */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex gap-1 bg-muted/50 rounded-lg p-1">
           {TAB_LINKS.map(({ to, label }) => (
             <NavLink
@@ -61,7 +61,7 @@ export default function CategoriesPage() {
             </NavLink>
           ))}
         </div>
-        <Button onClick={() => setShowAdd(true)} className="gap-2">
+        <Button onClick={() => setShowAdd(true)} className="gap-2 w-full sm:w-auto">
           <Plus className="w-4 h-4" />
           {t('category.addCategory')}
         </Button>

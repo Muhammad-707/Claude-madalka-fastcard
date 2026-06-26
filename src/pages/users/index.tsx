@@ -173,6 +173,7 @@ export default function UsersPage() {
       />
 
       <EditUserDialog
+        key={editUser?.userId || editUser?.id || 'no-edit'}
         user={editUser}
         onClose={() => setEditUser(null)}
       />
