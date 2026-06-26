@@ -11,7 +11,9 @@ export const productsApi = baseApi.injectEndpoints({
           if (response.status === 204) {
             return { data: [], totalRecord: 0, totalPage: 0, pageNumber: 1, pageSize: 10, errors: [], statusCode: 204 }
           }
-          return response.json()
+          const json = await response.json()
+          // Server wraps paginated response: { data: Paginated<T>, errors, statusCode }
+          return json?.data ?? json
         },
       }),
       providesTags: ['Product'],

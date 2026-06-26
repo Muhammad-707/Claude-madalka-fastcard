@@ -20,11 +20,8 @@ export const categoriesApi = baseApi.injectEndpoints({
       query: (id) => ({ url: '/Category/delete-category', method: 'DELETE', params: { id } }),
       invalidatesTags: ['Category'],
     }),
-    getSubCategories: b.query<SubCategory[], number | void>({
-      query: (categoryId) => ({
-        url: '/SubCategory/get-sub-categories',
-        params: categoryId ? { categoryId } : {},
-      }),
+    getSubCategories: b.query<SubCategory[], void>({
+      query: () => '/SubCategory/get-sub-category',
       transformResponse: (r: { data: SubCategory[] | null }) => r.data ?? [],
       providesTags: ['SubCategory'],
     }),
@@ -32,7 +29,7 @@ export const categoriesApi = baseApi.injectEndpoints({
       query: (params) => ({ url: '/SubCategory/add-sub-category', method: 'POST', params }),
       invalidatesTags: ['SubCategory', 'Category'],
     }),
-    updateSubCategory: b.mutation<unknown, { Id: number; SubCategoryName: string }>({
+    updateSubCategory: b.mutation<unknown, { Id: number; CategoryId: number; SubCategoryName: string }>({
       query: (params) => ({ url: '/SubCategory/update-sub-category', method: 'PUT', params }),
       invalidatesTags: ['SubCategory', 'Category'],
     }),

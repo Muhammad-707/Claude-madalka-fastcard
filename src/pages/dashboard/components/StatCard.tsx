@@ -7,12 +7,24 @@ interface StatCardProps {
   iconBg: string
   label: string
   value: number
+  secondValue?: number
+  secondLabel?: string
   active: boolean
   onClick: () => void
   isLoading: boolean
 }
 
-export function StatCard({ icon, iconBg, label, value, active, onClick, isLoading }: StatCardProps) {
+export function StatCard({
+  icon,
+  iconBg,
+  label,
+  value,
+  secondValue,
+  secondLabel,
+  active,
+  onClick,
+  isLoading,
+}: StatCardProps) {
   if (isLoading) {
     return <Skeleton className="h-[88px] rounded-xl" />
   }
@@ -28,9 +40,20 @@ export function StatCard({ icon, iconBg, label, value, active, onClick, isLoadin
       )}
     >
       <div className={cn('rounded-full p-3 flex-shrink-0', iconBg)}>{icon}</div>
-      <div>
+      <div className="min-w-0">
         <p className="text-xs text-muted-foreground">{label}</p>
-        <p className="text-2xl font-bold mt-0.5">{value.toLocaleString()}</p>
+        {secondValue !== undefined ? (
+          <div className="flex items-baseline gap-2 mt-0.5">
+            <span className="text-2xl font-bold">{value.toLocaleString()}</span>
+            <span className="text-xs text-muted-foreground">/</span>
+            <span className="text-2xl font-bold">{secondValue.toLocaleString()}</span>
+          </div>
+        ) : (
+          <p className="text-2xl font-bold mt-0.5">{value.toLocaleString()}</p>
+        )}
+        {secondLabel && (
+          <p className="text-[10px] text-muted-foreground leading-tight">{secondLabel}</p>
+        )}
       </div>
     </button>
   )

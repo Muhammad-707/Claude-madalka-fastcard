@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Pencil, Trash2 } from 'lucide-react'
+import { Pencil, Trash2, ImageIcon } from 'lucide-react'
 import { Checkbox } from '@/shared/ui/checkbox'
 import { Badge } from '@/shared/ui/badge'
 import { Button } from '@/shared/ui/button'
@@ -40,107 +40,192 @@ export function ProductTable({
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="border-b border-border text-muted-foreground">
-            <th className="pb-3 pr-3 w-10">
+    <>
+      {/* Mobile card list — visible below md */}
+      <div className="flex flex-col gap-3 md:hidden">
+        <div className="flex items-center gap-2 pb-2 border-b border-border">
+          <Checkbox
+            checked={allSelected}
+            onCheckedChange={onToggleAll}
+            aria-label="Select all"
+          />
+          <span className="text-xs text-muted-foreground font-medium">{t('products.title')}</span>
+        </div>
+        {products.map((product) => {
+          const isSelected = selectedIds.includes(product.id)
+          const inStock = product.quantity > 0
+          return (
+            <div
+              key={product.id}
+              className="flex items-start gap-3 p-3 rounded-lg border border-border bg-background/50 hover:bg-muted/20 transition-colors"
+            >
               <Checkbox
-                checked={allSelected}
-                onCheckedChange={onToggleAll}
-                aria-label="Select all"
+                checked={isSelected}
+                onCheckedChange={() => onToggleRow(product.id)}
+                aria-label={`Select ${product.productName}`}
+                className="mt-1"
               />
-            </th>
-            <th className="pb-3 pr-4 text-left font-medium">{t('products.product')}</th>
-            <th className="pb-3 pr-4 text-left font-medium">{t('products.inventory')}</th>
-            <th className="pb-3 pr-4 text-left font-medium hidden md:table-cell">
-              {t('form.brand')}
-            </th>
-            <th className="pb-3 pr-4 text-left font-medium">{t('products.price')}</th>
-            <th className="pb-3 text-right font-medium">{t('products.action')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => {
-            const isSelected = selectedIds.includes(product.id)
-            const inStock = product.quantity > 0
-            return (
-              <tr
-                key={product.id}
-                className="border-b border-border/40 hover:bg-muted/20 transition-colors"
-              >
-                <td className="py-3 pr-3">
-                  <Checkbox
-                    checked={isSelected}
-                    onCheckedChange={() => onToggleRow(product.id)}
-                    aria-label={`Select ${product.productName}`}
+              <div className="w-12 h-12 rounded-lg bg-muted flex-shrink-0 overflow-hidden flex items-center justify-center">
+                {product.images?.[0] ? (
+                  <img
+                    src={getImageUrl(product.images[0].imageName)}
+                    alt={product.productName}
+                    className="w-full h-full object-cover"
                   />
-                </td>
-                <td className="py-3 pr-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-muted flex-shrink-0 overflow-hidden">
-                      {product.images?.[0] ? (
-                        <img
-                          src={getImageUrl(product.images[0].imageName)}
-                          alt={product.productName}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : null}
-                    </div>
-                    <span className="font-medium truncate max-w-[180px]">
-                      {product.productName}
-                    </span>
-                  </div>
-                </td>
-                <td className="py-3 pr-4">
-                  {inStock ? (
-                    <span className="text-muted-foreground">
-                      {product.quantity} {t('products.inStock')}
-                    </span>
-                  ) : (
-                    <Badge variant="outline" className="text-muted-foreground">
-                      {t('products.outOfStock')}
-                    </Badge>
-                  )}
-                </td>
-                <td className="py-3 pr-4 text-muted-foreground hidden md:table-cell">
-                  {product.brandName ?? '—'}
-                </td>
-                <td className="py-3 pr-4 font-medium">
+                ) : (
+                  <ImageIcon className="w-4 h-4 text-muted-foreground/40" />
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-sm leading-tight truncate">{product.productName}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">
                   ${product.price.toFixed(2)}
                   {product.hasDiscount && product.discountPrice && (
-                    <span className="ml-1 text-xs text-emerald-600 dark:text-emerald-400">
+                    <span className="ml-1 text-emerald-600 dark:text-emerald-400">
                       → ${product.discountPrice.toFixed(2)}
                     </span>
                   )}
-                </td>
-                <td className="py-3">
-                  <div className="flex justify-end gap-1">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8 text-primary hover:text-primary/80"
-                      asChild
-                    >
-                      <Link to={`/products/${product.id}/edit`}>
-                        <Pencil className="w-3.5 h-3.5" />
-                      </Link>
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8 text-destructive hover:text-destructive/80"
-                      onClick={() => onDelete(product.id)}
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    </div>
+                </p>
+                <div className="mt-1">
+                  {inStock ? (
+                    <span className="text-xs text-muted-foreground">
+                      {product.quantity} {t('products.inStock')}
+                    </span>
+                  ) : (
+                    <Badge variant="outline" className="text-xs text-muted-foreground">
+                      {t('products.outOfStock')}
+                    </Badge>
+                  )}
+                </div>
+              </div>
+              <div className="flex flex-col items-end gap-1">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-7 w-7 text-primary hover:text-primary/80"
+                  asChild
+                >
+                  <Link to={`/products/${product.id}/edit`}>
+                    <Pencil className="w-3 h-3" />
+                  </Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-7 w-7 text-destructive hover:text-destructive/80"
+                  onClick={() => onDelete(product.id)}
+                >
+                  <Trash2 className="w-3 h-3" />
+                </Button>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Desktop table — hidden below md */}
+      <div className="hidden md:block overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-border text-muted-foreground">
+              <th className="pb-3 pr-3 w-10">
+                <Checkbox
+                  checked={allSelected}
+                  onCheckedChange={onToggleAll}
+                  aria-label="Select all"
+                />
+              </th>
+              <th className="pb-3 pr-4 text-left font-medium">{t('products.product')}</th>
+              <th className="pb-3 pr-4 text-left font-medium">{t('products.inventory')}</th>
+              <th className="pb-3 pr-4 text-left font-medium">{t('form.brand')}</th>
+              <th className="pb-3 pr-4 text-left font-medium">{t('products.price')}</th>
+              <th className="pb-3 text-right font-medium">{t('products.action')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => {
+              const isSelected = selectedIds.includes(product.id)
+              const inStock = product.quantity > 0
+              return (
+                <tr
+                  key={product.id}
+                  className="border-b border-border/40 hover:bg-muted/20 transition-colors"
+                >
+                  <td className="py-3 pr-3">
+                    <Checkbox
+                      checked={isSelected}
+                      onCheckedChange={() => onToggleRow(product.id)}
+                      aria-label={`Select ${product.productName}`}
+                    />
+                  </td>
+                  <td className="py-3 pr-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-muted flex-shrink-0 overflow-hidden flex items-center justify-center">
+                        {product.images?.[0] ? (
+                          <img
+                            src={getImageUrl(product.images[0].imageName)}
+                            alt={product.productName}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <ImageIcon className="w-3.5 h-3.5 text-muted-foreground/40" />
+                        )}
+                      </div>
+                      <span className="font-medium truncate max-w-[180px]">
+                        {product.productName}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="py-3 pr-4">
+                    {inStock ? (
+                      <span className="text-muted-foreground">
+                        {product.quantity} {t('products.inStock')}
+                      </span>
+                    ) : (
+                      <Badge variant="outline" className="text-muted-foreground">
+                        {t('products.outOfStock')}
+                      </Badge>
+                    )}
+                  </td>
+                  <td className="py-3 pr-4 text-muted-foreground">
+                    {product.brandName ?? '—'}
+                  </td>
+                  <td className="py-3 pr-4 font-medium">
+                    ${product.price.toFixed(2)}
+                    {product.hasDiscount && product.discountPrice && (
+                      <span className="ml-1 text-xs text-emerald-600 dark:text-emerald-400">
+                        → ${product.discountPrice.toFixed(2)}
+                      </span>
+                    )}
+                  </td>
+                  <td className="py-3">
+                    <div className="flex justify-end gap-1">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-primary hover:text-primary/80"
+                        asChild
+                      >
+                        <Link to={`/products/${product.id}/edit`}>
+                          <Pencil className="w-3.5 h-3.5" />
+                        </Link>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-destructive hover:text-destructive/80"
+                        onClick={() => onDelete(product.id)}
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   )
 }

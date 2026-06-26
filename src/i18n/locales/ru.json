@@ -118,6 +118,7 @@
   },
   "common": {
     "confirmDelete": "Вы уверены, что хотите удалить?",
+    "confirmDeleteCount": "Удалить {{count}} выбранных записей?",
     "yes": "Да",
     "no": "Нет",
     "successAdded": "Успешно добавлено",

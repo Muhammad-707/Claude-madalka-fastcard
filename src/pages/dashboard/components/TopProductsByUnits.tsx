@@ -11,6 +11,8 @@ interface TopProductsByUnitsProps {
 export function TopProductsByUnits({ products, isLoading }: TopProductsByUnitsProps) {
   const { t } = useTranslation()
 
+  const sorted = [...products].sort((a, b) => b.quantity - a.quantity)
+
   return (
     <div className="bg-card border rounded-xl p-4">
       <h3 className="text-sm font-semibold mb-4">{t('dashboard.topByUnits')}</h3>
@@ -21,12 +23,15 @@ export function TopProductsByUnits({ products, isLoading }: TopProductsByUnitsPr
         <span className="text-right">{t('dashboard.units')}</span>
       </div>
 
-      <div className="space-y-3 overflow-y-auto max-h-60 scrollbar-hidden">
+      <div
+        className="space-y-3 overflow-y-auto max-h-60 scrollbar-hidden"
+        style={{ scrollbarWidth: 'none' }}
+      >
         {isLoading
           ? Array.from({ length: 5 }).map((_, i) => (
               <Skeleton key={i} className="h-10 w-full" />
             ))
-          : products.map((product) => (
+          : sorted.map((product) => (
               <div
                 key={product.id}
                 className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-2"

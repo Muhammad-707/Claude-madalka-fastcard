@@ -118,6 +118,7 @@
   },
   "common": {
     "confirmDelete": "Are you sure you want to delete?",
+    "confirmDeleteCount": "Delete {{count}} selected items?",
     "yes": "Yes",
     "no": "No",
     "successAdded": "Successfully added",

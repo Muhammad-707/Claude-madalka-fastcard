@@ -55,7 +55,9 @@ export default function DashboardPage() {
               icon={<LayoutGrid className="w-5 h-5 text-emerald-500" />}
               iconBg="bg-emerald-100 dark:bg-emerald-900/30"
               label={t('dashboard.categoriesBrands')}
-              value={totalCategories + totalBrands}
+              value={totalCategories}
+              secondValue={totalBrands}
+              secondLabel={`${t('nav.categories')} / ${t('nav.brands')}`}
               active={activeCard === 'categoriesBrands'}
               onClick={() => setActiveCard('categoriesBrands')}
               isLoading={categoriesLoading || brandsLoading}

@@ -183,7 +183,7 @@ export default function UsersPage() {
         title={t('common.confirmDelete')}
         description={
           deleteIds && deleteIds.length > 1
-            ? `Are you sure you want to delete ${deleteIds.length} selected items?`
+            ? t('common.confirmDeleteCount', { count: deleteIds.length })
             : t('common.confirmDelete')
         }
         onConfirm={handleDeleteConfirm}

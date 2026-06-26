@@ -45,7 +45,7 @@ export function RecentCustomers({ users, isLoading }: RecentCustomersProps) {
                       {user.email}
                     </td>
                     <td className="py-2.5 text-right">
-                      <Badge variant={user.role === 'Admin' ? 'default' : 'secondary'}>
+                      <Badge variant={user.role === 'Admin' || user.role === 'SuperAdmin' ? 'default' : 'secondary'}>
                         {user.role ?? 'User'}
                       </Badge>
                     </td>

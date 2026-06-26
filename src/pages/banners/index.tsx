@@ -32,7 +32,6 @@ function BannerPanel({ title }: { title: string }) {
       ...prev,
       { id: crypto.randomUUID(), preview, title: f.name },
     ])
-    setFile(null)
   }
 
   function removeItem(id: string) {

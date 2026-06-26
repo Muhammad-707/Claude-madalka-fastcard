@@ -16,7 +16,7 @@
 | POST | `/Account/register` | `{ userName, phoneNumber, email, password, confirmPassword }` |
 | POST | `/Account/login` | `{ userName, password }` → `data` = **JWT** |
 
-JWT payload: `sid`, `name`, `email`, `role` (`User`/`Admin`), `exp`, `iss`, `aud`. В админку пускать только `role === 'Admin'` (docs/06).
+JWT payload: `sid`, `name`, `email`, `role` (**`string[]`** — массив ролей, например `["SuperAdmin", "User"]`), `exp`, `iss`, `aud`. В админку пускать если `role.includes('Admin') || role.includes('SuperAdmin')`. Используй хелпер `hasAdminRole(role)` из `shared/lib/jwt.ts` (docs/06).
 
 ## Brand
 | Метод | Путь | Параметры |

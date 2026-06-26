@@ -4,7 +4,27 @@ import type { Paginated, UserProfile, UserFilters, AddRoleParams, Role, Register
 export const usersApi = baseApi.injectEndpoints({
   endpoints: (b) => ({
     getUsers: b.query<Paginated<UserProfile>, UserFilters | void>({
-      query: (params) => ({ url: '/UserProfile/get-user-profiles', params: params ?? {} }),
+      query: (params) => ({
+        url: '/UserProfile/get-user-profiles',
+        params: params ?? {},
+        responseHandler: async (response: Response) => {
+          const EMPTY: Paginated<UserProfile> = {
+            pageNumber: 1, pageSize: 10, totalPage: 0, totalRecord: 0,
+            data: [], errors: [], statusCode: 200,
+          }
+          const json = await response.json().catch(() => null)
+          if (!json) return EMPTY
+          const candidate = json?.data
+          // Wrapped: { data: Paginated<UserProfile>, errors, statusCode }
+          if (candidate && typeof candidate === 'object' && !Array.isArray(candidate) &&
+              ('pageNumber' in candidate || 'totalRecord' in candidate)) {
+            return candidate
+          }
+          // Flat: { pageNumber, totalRecord, data: [...], errors, statusCode }
+          if ('pageNumber' in json || 'totalRecord' in json) return json
+          return EMPTY
+        },
+      }),
       providesTags: ['User'],
     }),
     updateUser: b.mutation<unknown, FormData>({
@@ -16,16 +36,16 @@ export const usersApi = baseApi.injectEndpoints({
       invalidatesTags: ['User'],
     }),
     getRoles: b.query<Role[], void>({
-      query: () => '/Role/get-user-roles',
+      query: () => '/UserProfile/get-user-roles',
       transformResponse: (r: { data: Role[] | null }) => r.data ?? [],
       providesTags: ['Role'],
     }),
     addRole: b.mutation<unknown, AddRoleParams>({
-      query: (params) => ({ url: '/Role/addrole-from-user', method: 'POST', params }),
+      query: (params) => ({ url: '/UserProfile/addrole-from-user', method: 'POST', params }),
       invalidatesTags: ['User'],
     }),
     removeRole: b.mutation<unknown, AddRoleParams>({
-      query: (params) => ({ url: '/Role/remove-role-from-user', method: 'DELETE', params }),
+      query: (params) => ({ url: '/UserProfile/remove-role-from-user', method: 'DELETE', params }),
       invalidatesTags: ['User'],
     }),
     addUser: b.mutation<unknown, RegisterDto>({
