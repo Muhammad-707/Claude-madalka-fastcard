@@ -20,8 +20,11 @@ export const categoriesApi = baseApi.injectEndpoints({
       query: (id) => ({ url: '/Category/delete-category', method: 'DELETE', params: { id } }),
       invalidatesTags: ['Category'],
     }),
-    getSubCategories: b.query<SubCategory[], void>({
-      query: () => '/SubCategory/get-sub-category',
+    getSubCategories: b.query<SubCategory[], number>({
+      query: (categoryId) => ({
+        url: '/SubCategory/get-sub-category',
+        params: { categoryId },
+      }),
       transformResponse: (r: { data: SubCategory[] | null }) => r.data ?? [],
       providesTags: ['SubCategory'],
     }),

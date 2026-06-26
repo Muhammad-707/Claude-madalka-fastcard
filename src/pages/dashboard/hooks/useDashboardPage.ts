@@ -22,7 +22,7 @@ export function useDashboardPage() {
   const [activeCard, setActiveCard] = useState<ActiveCard>('products')
 
   const { data: productsData, isLoading: productsLoading, isError: productsError } =
-    useGetProductsQuery({ PageNumber: 1, PageSize: 20 })
+    useGetProductsQuery({ PageNumber: 1, PageSize: 100 })
 
   const { data: usersData, isLoading: usersLoading, isError: usersError } =
     useGetUsersQuery({ PageNumber: 1, PageSize: 10 })

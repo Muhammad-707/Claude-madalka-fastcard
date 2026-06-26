@@ -6,6 +6,14 @@ import { Button } from '@/shared/ui/button'
 import { Skeleton } from '@/shared/ui/skeleton'
 import type { UserProfile } from '@/shared/api/types'
 
+function uid(user: UserProfile): string {
+  return user.userId || user.id
+}
+
+function userRole(user: UserProfile): string {
+  return user.role ?? user.userRoles?.[0]?.name ?? 'User'
+}
+
 interface UserTableProps {
   users: UserProfile[]
   isLoading: boolean
@@ -52,16 +60,18 @@ export function UserTable({
           <span className="text-xs text-muted-foreground font-medium">{t('common.delete')} {t('users.allRoles').toLowerCase()}</span>
         </div>
         {users.map((user) => {
-          const isSelected = selectedIds.includes(user.id)
+          const id = uid(user)
+          const isSelected = selectedIds.includes(id)
+          const role = userRole(user)
           return (
             <div
-              key={user.id}
+              key={id}
               className="flex items-start gap-3 p-3 rounded-lg border border-border bg-background/50 hover:bg-muted/20 transition-colors"
             >
               <Checkbox
                 checked={isSelected}
-                onCheckedChange={() => onToggleRow(user.id)}
-                aria-label={`Select ${user.userName}`}
+                onCheckedChange={() => onToggleRow(id)}
+                aria-label={`Select ${user.userName ?? user.firstName}`}
                 className="mt-0.5"
               />
               <div className="flex-1 min-w-0">
@@ -74,8 +84,8 @@ export function UserTable({
                 )}
               </div>
               <div className="flex flex-col items-end gap-2">
-                <Badge variant={user.role === 'Admin' || user.role === 'SuperAdmin' ? 'default' : 'secondary'} className="text-xs">
-                  {user.role ?? 'User'}
+                <Badge variant={role === 'Admin' || role === 'SuperAdmin' ? 'default' : 'secondary'} className="text-xs">
+                  {role}
                 </Badge>
                 <div className="flex gap-1">
                   <Button
@@ -90,7 +100,7 @@ export function UserTable({
                     variant="ghost"
                     size="icon"
                     className="h-7 w-7 text-muted-foreground hover:text-destructive"
-                    onClick={() => onDelete(user.id)}
+                    onClick={() => onDelete(id)}
                   >
                     <Trash2 className="w-3 h-3" />
                   </Button>
@@ -122,17 +132,19 @@ export function UserTable({
           </thead>
           <tbody>
             {users.map((user) => {
-              const isSelected = selectedIds.includes(user.id)
+              const id = uid(user)
+              const isSelected = selectedIds.includes(id)
+              const role = userRole(user)
               return (
                 <tr
-                  key={user.id}
+                  key={id}
                   className="border-b border-border/40 hover:bg-muted/20 transition-colors"
                 >
                   <td className="py-3 pr-3">
                     <Checkbox
                       checked={isSelected}
-                      onCheckedChange={() => onToggleRow(user.id)}
-                      aria-label={`Select ${user.userName}`}
+                      onCheckedChange={() => onToggleRow(id)}
+                      aria-label={`Select ${user.userName ?? user.firstName}`}
                     />
                   </td>
                   <td className="py-3 pr-4 font-medium">
@@ -141,8 +153,8 @@ export function UserTable({
                   <td className="py-3 pr-4 text-muted-foreground">{user.email}</td>
                   <td className="py-3 pr-4 text-muted-foreground">{user.phoneNumber}</td>
                   <td className="py-3 pr-4">
-                    <Badge variant={user.role === 'Admin' || user.role === 'SuperAdmin' ? 'default' : 'secondary'}>
-                      {user.role ?? 'User'}
+                    <Badge variant={role === 'Admin' || role === 'SuperAdmin' ? 'default' : 'secondary'}>
+                      {role}
                     </Badge>
                   </td>
                   <td className="py-3">
@@ -159,7 +171,7 @@ export function UserTable({
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                        onClick={() => onDelete(user.id)}
+                        onClick={() => onDelete(id)}
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </Button>

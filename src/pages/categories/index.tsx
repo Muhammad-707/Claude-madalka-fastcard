@@ -16,7 +16,7 @@ import { cn } from '@/shared/lib/utils'
 const TAB_LINKS = [
   { to: '/categories', label: 'nav.categories' },
   { to: '/brands', label: 'nav.brands' },
-  { to: '/banners', label: 'nav.banners' },
+  { to: '/sub-categories', label: 'nav.subCategory' },
 ]
 
 export default function CategoriesPage() {

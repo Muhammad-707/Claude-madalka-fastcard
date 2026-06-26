@@ -1,2597 +1,1571 @@
-Web Api
- v1.0 
-OAS3
-https: //store-api.softclub.tj/swagger/v1/swagger.json
-API Services.
-
-Authorize
-Account
-
-
-POST
-/Account/register
-
-Parameters
-Cancel
-No parameters
-
-Request body
-
-application/json
 {
-    "userName": "string",
-    "phoneNumber": "string",
-    "email": "string",
-    "password": "string",
-    "confirmPassword": "string"
-}
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https: //store-api.softclub.tj/Account/register' \
-  -H 'accept: * /*' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "userName": "string",
-  "phoneNumber": "string",
-  "email": "string",
-  "password": "string",
-  "confirmPassword": "string"
-}'
-Request URL
-https://store-api.softclub.tj/Account/register
-Server response
-Code	Details
-500
-Undocumented
-Error: response status is 500
-
-Response body
-Download
-{
-  "data": null,
-  "errors": [
-    "An error occurred while saving the entity changes. See the inner exception for details."
-  ],
-  "statusCode": 500
-}
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a103ff78eea70935-WAW 
- content-type: application/json; charset=utf-8 
- date: Tue,23 Jun 2026 13:56:45 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jrwFoWsSXvuGcvV2HU2QnHwSDcPGzavXfE7w%2FQmOZ9emslrlnEZYwz89ZpdLLfLmFAy3crUop8LgHm6sDmxGprrcJWXZazPQUMNlZgiYDrEx1Hf4EwcSCaXjuPh82YVrMJ1Nb3d%2B11I%3D"}]} 
- server: cloudflare 
- vary: Origin 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/Account/login
-
-Parameters
-Cancel
-No parameters
-
-Request body
-
-application/json
-{
-  "userName": "string",
-  "password": "string"
-}
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https://store-api.softclub.tj/Account/login' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "userName": "string",
-    "password": "string"
-}'
-Request URL
-https: //store-api.softclub.tj/Account/login
-Server response
-Code	Details
-200	
-Response body
-Download
-{
-    "data": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIyM2NiZmQwYy0xZWZiLTRmMTEtYTNmZC1hNjhlZWVlNDQ2ODAiLCJuYW1lIjoic3RyaW5nIiwiZW1haWwiOiJzdHJpbmciLCJzdWIiOiIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNzgyMjU5MDExLCJpc3MiOiJvbmxpbmUtc3RvcmUudGoiLCJhdWQiOiJvbmxpbmUtc3RvcmUudGoifQ.7s0BQJmc-NEwVdGBfczSDp6xzkjguE5laLpxTLoTm2w",
-    "errors": [],
-    "statusCode": 200
-}
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a103ff9f4a440935-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,
-23 Jun 2026 13: 56: 51 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=RF%2BydFe7rgS7EyAGHOTfu4IaWNwFxHupnFC7as35BJpoA%2BOgCCd79vcXeEzBI8MjqXbueVQzhGQJuru2H%2FqFsWeHZWUv8IoczUsUygyjYaWCZgTP1a%2BWIj6bQA2yBbUR7hjJiI2eQ9o%3D"
-        }
-    ]
-} 
- server: cloudflare 
- vary: Origin 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-Brand
-
-
-GET
-/Brand/get-brands
-
-Parameters
-Cancel
-Name	Description
-BrandName
-string
-(query)
-BrandName
-BrandId
-integer($int32)
-(query)
-BrandId
-PageNumber
-integer($int32)
-(query)
-PageNumber
-PageSize
-integer($int32)
-(query)
-PageSize
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https: //store-api.softclub.tj/Brand/get-brands' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Brand/get-brands
-Server response
-Code	Details
-200	
-Response body
-Download
-{
-  "pageNumber": 1,
-  "pageSize": 10,
-  "totalPage": 1,
-  "totalRecord": 5,
-  "data": [
-    {
-      "id": 2,
-      "brandName": "name"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Web Api",
+    "description": "API Services.",
+    "contact": {
+      "name": "Quiz"
     },
-    {
-      "id": 5,
-      "brandName": "kfc"
+    "version": "v1.0"
+  },
+  "paths": {
+    "/Account/register": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain.Dtos.AccountDtos.RegisterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain.Dtos.AccountDtos.RegisterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain.Dtos.AccountDtos.RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     },
-    {
-      "id": 6,
-      "brandName": "kfcs"
+    "/Account/login": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain.Dtos.AccountDtos.LoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain.Dtos.AccountDtos.LoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain.Dtos.AccountDtos.LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     },
-    {
-      "id": 7,
-      "brandName": "kfcse"
+    "/Brand/get-brands": {
+      "get": {
+        "tags": [
+          "Brand"
+        ],
+        "parameters": [
+          {
+            "name": "BrandName",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BrandId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     },
-    {
-      "id": 4,
-      "brandName": "Samsung"
-    }
-  ],
-  "errors": [],
-  "statusCode": 200
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a103ffc2aaf30935-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,23 Jun 2026 13:56:57 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2Fiw7hFg0hu9i14boEtZWMX3Wdm1qcNVIA%2BtfhSgrQ8IJ4kXeHRX7t8vnU59eLzmbh1%2FCZ4lqLpDQxRf%2BglOADAsIrnzh85SOXuTEjXR26tpNROmaCj4stEuqz0pEiI1pcbrZc8gBuCw%3D"}]} 
- server: cloudflare 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-GET
-/Brand/get-brand-by-id
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/Brand/get-brand-by-id?id=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Brand/get-brand-by-id?id=1
-Server response
-Code	Details
-400
-Undocumented
-Error: response status is 400
-
-Response body
-Download
-{
-    "data": null,
-    "errors": [
-        "Brand not found!"
-    ],
-    "statusCode": 400
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a103fff77bd80935-WAW 
- content-type: application/json; charset=utf-8 
- date: Tue,
-23 Jun 2026 13: 57: 05 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=ie4%2FeVqjfgaSVMU3VgcIwBbM5X3CHrR0TbVutQeGQ0BrHNtFOnKOSga49iGgkono4yB8fQJmpTIRV6qFU6CB20kuedG7Owp9HewMGPV1fb9wVl25n0gzghDPbHp20EasgSQEWSzZl68%3D"
+    "/Brand/get-brand-by-id": {
+      "get": {
+        "tags": [
+          "Brand"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/Brand/add-brand
-
-Parameters
-Cancel
-Name	Description
-BrandName *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https: //store-api.softclub.tj/Brand/add-brand?BrandName=a' \
-  -H 'accept: * /*' \
-  -d ''
-Request URL
-https://store-api.softclub.tj/Brand/add-brand?BrandName=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a1040030899e0935-WAW 
- content-length: 0 
- date: Tue,23 Jun 2026 13:57:15 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=xFRFCFXnBhQkB3kwF2P97bLWQp8T8t%2FH45RJ2faqjphj8kLEU%2F1hgmNfguf3BKNBmGJBJBD0JL2YotWWQf6vWM8yybjhMGxB7H9l9%2BRpzvLCWBUYXj1NbClKr8SM7UvFsxnWcQ5WM00%3D"}]} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/Brand/update-brand
-
-Parameters
-Cancel
-Name	Description
-Id *
-integer($int32)
-(query)
-1
-BrandName *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https://store-api.softclub.tj/Brand/update-brand?Id=1&BrandName=a' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Brand/update-brand?Id=1&BrandName=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104005dbfe40935-WAW 
- content-length: 0 
- date: Tue,
-23 Jun 2026 13: 57: 22 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=ZhfVV%2FVBSwmib4dm3hBN%2FOKuJQHehvQVtgdHxfNmBYbM5J6UrccqRwgZbDD04PZHe%2FWsjw8q%2F6BGsqwK4Rtq7CgIelnRfaaOPBe%2Bx5jFSNf1vWwQpwouW9%2FUmLG%2BYngpv4DCeTWDi%2FY%3D"
+      }
+    },
+    "/Brand/add-brand": {
+      "post": {
+        "tags": [
+          "Brand"
+        ],
+        "parameters": [
+          {
+            "name": "BrandName",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/Brand/delete-brand
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https: //store-api.softclub.tj/Brand/delete-brand?id=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Brand/delete-brand?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104008488f20935-WAW 
- content-length: 0 
- date: Tue,23 Jun 2026 13:57:28 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=hVBkxfP6PsCDrhC9iUASaVp5h%2FqSBwWOlHKQQva1ddtYZRh7yTffZ4lN0ylDtopgg5rTcgkSfI1LKUU3sgbVDHvf3rbMbSfbV2e8LU%2FirmMOdV2KyOuSb2sr9HKf05rp5tZWicfTmzg%3D"}]} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-Cart
-
-
-GET
-/Cart/get-products-from-cart
-
-Parameters
-Cancel
-No parameters
-
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/Cart/get-products-from-cart' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Cart/get-products-from-cart
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10400b74d780935-WAW 
- content-length: 0 
- date: Tue,
-23 Jun 2026 13: 57: 36 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=%2Bsh1bVQQqac50xkMwNj5mSLCkLRRuY6mdI2ilsfwktad5WlIKRO%2BiApPSlbwZyb5Mq5qT%2FDLR8UQHFEDBGnvDiEBpQZ%2BUruijwSl73wyLge6m5J0vSZRt85CgzFmPv%2B5wI6atUZUTlc%3D"
+      }
+    },
+    "/Brand/update-brand": {
+      "put": {
+        "tags": [
+          "Brand"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "BrandName",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/Cart/add-product-to-cart
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https: //store-api.softclub.tj/Cart/add-product-to-cart?id=1' \
-  -H 'accept: * /*' \
-  -d ''
-Request URL
-https://store-api.softclub.tj/Cart/add-product-to-cart?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10400eb5b830935-WAW 
- content-length: 0 
- date: Tue,23 Jun 2026 13:57:44 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LawbAsdhkvm7JYS4ET5xFWCsnY10KQCU2O8uyv172eIgacU6mMKvs2UrG19Cv643%2Fach0nNYBldLsGAwqmi%2BNvZyMipfQYgiuzFR%2BwFb7rQrAyfst58Op%2BqHa9JuthnbLMwRGhgoPQg%3D"}]} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/Cart/increase-product-in-cart
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https://store-api.softclub.tj/Cart/increase-product-in-cart?id=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Cart/increase-product-in-cart?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10401127a190935-WAW 
- content-length: 0 
- date: Tue,
-23 Jun 2026 13: 57: 51 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=1FIHWqG2HPjAla7GuxnEDI2HLzd7X6UArnpbNX%2FOREs3yesOuUwbOo%2FokzifU%2BaV03z1zk2gBC9sIie%2Ftd5DKUEnmVuF9Mq3KgczelqHyO5ou8DKw3edH6IU8xla2YZZj8KKKojzYtA%3D"
+      }
+    },
+    "/Brand/delete-brand": {
+      "delete": {
+        "tags": [
+          "Brand"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/Cart/reduce-product-in-cart
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https: //store-api.softclub.tj/Cart/reduce-product-in-cart?id=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Cart/reduce-product-in-cart?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a1040160590c0935-WAW 
- content-length: 0 
- date: Tue,23 Jun 2026 13:58:03 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=7hdU%2FBOrYaFWYs17i1sI1%2BZ1NwkzHAh%2BiD8i3TlGA3jhQf3AEwWicVZ9VtYk1ecS8rx3BmGBBxq8jKND%2FgF2OamRlegEcVgSpjVP6l9jq4d%2FfmyPBoqO%2Fyt4lM8yshfplV9XkMHliTg%3D"}]} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/Cart/delete-product-from-cart
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https://store-api.softclub.tj/Cart/delete-product-from-cart?id=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Cart/delete-product-from-cart?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10401815a750935-WAW 
- content-length: 0 
- date: Tue,
-23 Jun 2026 13: 58: 08 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=jrFi9RYVwivtmnzogfHqQQhY2xutIes6j%2F8zkIS7gh30U1W0CqN%2Bmw6JZAFmEtpzu1xCUy0BqHFNYBu5dzXiYUKFhbnolL9zdVhrKfzmJpDazUyq5Vj5LtMAjBHwP6byPHskY2zJ0A8%3D"
+      }
+    },
+    "/Cart/get-products-from-cart": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/Cart/clear-cart
-
-Parameters
-Cancel
-No parameters
-
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https: //store-api.softclub.tj/Cart/clear-cart' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Cart/clear-cart
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10401a3ff3b0935-WAW 
- content-length: 0 
- date: Tue,23 Jun 2026 13:58:14 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=UMvBQRjVYKmrw0BKyEJStMyxpKpbDbRC9gCHkJsP53dN4e95xNMCbSmwA%2BU2kdrBBb%2FjRnKXNy7Lbj2TZecOYn6%2FQ89BASdfIyG1JTM9ffxRV2cxnLtEG8d01mHnGvlu1tXlXgzafe4%3D"}]} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-Category
-
-
-GET
-/Category/get-categories
-
-Parameters
-Cancel
-No parameters
-
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/Category/get-categories' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Category/get-categories
-Server response
-Code	Details
-200	
-Response body
-Download
-{
-    "data": [
-        {
-            "id": 19,
-            "categoryImage": "92820bef-603f-4358-b00f-3f7bc0f215a2.png",
-            "subCategories": [
-                {
-                    "id": 151,
-                    "subCategoryName": "Samsung"
+      }
+    },
+    "/Cart/add-product-to-cart": {
+      "post": {
+        "tags": [
+          "Cart"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Cart/increase-product-in-cart": {
+      "put": {
+        "tags": [
+          "Cart"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Cart/reduce-product-in-cart": {
+      "put": {
+        "tags": [
+          "Cart"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Cart/delete-product-from-cart": {
+      "delete": {
+        "tags": [
+          "Cart"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Cart/clear-cart": {
+      "delete": {
+        "tags": [
+          "Cart"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Category/get-categories": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Category/get-category-by-id": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Category/add-category": {
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "CategoryImage",
+                  "CategoryName"
+                ],
+                "type": "object",
+                "properties": {
+                  "CategoryImage": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CategoryName": {
+                    "type": "string"
+                  }
                 }
-            ],
-            "categoryName": "Phones"
+              },
+              "encoding": {
+                "CategoryImage": {
+                  "style": "form"
+                },
+                "CategoryName": {
+                  "style": "form"
+                }
+              }
+            }
+          }
         },
-        {
-            "id": 20,
-            "categoryImage": "2f69e614-2bac-4253-bb6e-d1d7bdde4d93.png",
-            "subCategories": [],
-            "categoryName": "HeadPhones"
-        },
-        {
-            "id": 21,
-            "categoryImage": "2c0ab3cf-47b8-401f-b692-59e6db0132f5.png",
-            "subCategories": [],
-            "categoryName": "SmartWatch"
-        },
-        {
-            "id": 22,
-            "categoryImage": "c950cdfe-3365-4570-bfeb-fa6143e1d88c.png",
-            "subCategories": [],
-            "categoryName": "Computers"
-        },
-        {
-            "id": 23,
-            "categoryImage": "f3408f58-a283-46f7-8aa2-a69b32f62024.png",
-            "subCategories": [],
-            "categoryName": "Gaming"
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ],
-    "errors": [],
-    "statusCode": 200
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10401c10b040935-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,
-23 Jun 2026 13: 58: 19 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=itMoPXq93NfhKcuSPs4SAAO6drrnZhP2ULrlj7%2FfaSf5RdtcKhLUNQo8DSWNLwh8rIZQG0CR4BT5QsCXaEMuTlPKT3DS%2BW6aBbm6tQ19htVXV8Rt1pozNSD0wbckfkgrsdDHw6mwsZw%3D"
-        }
-    ]
-} 
- server: cloudflare 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-GET
-/Category/get-category-by-id
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https: //store-api.softclub.tj/Category/get-category-by-id?id=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Category/get-category-by-id?id=1
-Server response
-Code	Details
-400
-Undocumented
-Error: response status is 400
-
-Response body
-Download
-{
-  "data": null,
-  "errors": [
-    "Category not found!"
-  ],
-  "statusCode": 400
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10401f58b640935-WAW 
- content-type: application/json; charset=utf-8 
- date: Tue,23 Jun 2026 13:58:27 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FSt6nnTC9w3HdOGdO%2FokyTHi78QdUPD5O9VJ2j4FU7XRiXG6vF6KESfSuVbn6mDh6dtVqJwJrw%2Fdgo6x237Mub8ct%2FYnzb6tun2b2F4fFNlAr%2Fdj53bv4BpKm5kcVWB1nGNKgRPQ7CY%3D"}]} 
- server: cloudflare 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/Category/add-category
-
-Parameters
-Cancel
-Reset
-No parameters
-
-Request body
-
-multipart/form-data
-CategoryImage *
-string($binary)
-map.jpg
-CategoryName *
-string
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https://store-api.softclub.tj/Category/add-category' \
-  -H 'accept: */*' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'CategoryImage=@map.jpg;type=image/jpeg' \
-  -F 'CategoryName=a'
-Request URL
-https: //store-api.softclub.tj/Category/add-category
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104028e4c1d0935-WAW 
- content-length: 0 
- date: Tue,
-23 Jun 2026 13: 58: 53 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=tSC9UowE%2F1WYhrX83wgFcoXPIOQSvIhGN7IfOvw30aLhtBFy84dA3bNu33OHYd7Cb2qdcDynMMNd%2BEslAW6mbBmMvy0ZVOvmkOjNbLlK5Fg2noPZi%2BSZ8kF3PM3y9XW7EjKBMbMf8gs%3D"
-        }
-    ]
-} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/Category/update-category
-
-Parameters
-Cancel
-Reset
-No parameters
-
-Request body
-
-multipart/form-data
-Id *
-integer($int32)
-1
-CategoryImage *
-string($binary)
-map.jpg
-CategoryName *
-string
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https: //store-api.softclub.tj/Category/update-category' \
-  -H 'accept: * /*' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'Id=1' \
-  -F 'CategoryImage=@map.jpg;type=image/jpeg' \
-  -F 'CategoryName=a'
-Request URL
-https://store-api.softclub.tj/Category/update-category
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a1040327fcec0935-WAW 
- content-length: 0 
- date: Tue,23 Jun 2026 13:59:17 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=D%2FOvDLKt1%2BAAy0GOk%2FS3ePSQ1YlJzEHCoz3WLUUB8jXQ0dJiphV3r3rEyAItG95j1vQWptOTJem2vpIIetvcF%2FHEV2MP9dvE8TounhyJvBKmYRl2PO0VhS5jkRLfVjtdklQ2mKg8AR4%3D"}]} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/Category/delete-category
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https://store-api.softclub.tj/Category/delete-category?id=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Category/delete-category?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104034b3e960935-WAW 
- content-length: 0 
- date: Tue,
-23 Jun 2026 13: 59: 22 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=LqfPxqxu9LJ8%2FvKHyQhTW6XTbQr5KSPIokoUpq%2F7gG%2F3zwyfhqOFLuhByPbqh6ElNor0UA4SllT0YxYqjE856kmObROa66qUcvfLSigdSDhPnMjRvI2I2QWMum%2Fk%2FhcMsjBe7C6ZfNs%3D"
-        }
-    ]
-} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-Color
-
-
-GET
-/Color/get-colors
-
-Parameters
-Cancel
-Name	Description
-ColorName
-string
-(query)
-a
-PageNumber
-integer($int32)
-(query)
-1
-PageSize
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https: //store-api.softclub.tj/Color/get-colors?ColorName=a&PageNumber=1&PageSize=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Color/get-colors?ColorName=a&PageNumber=1&PageSize=1
-Server response
-Code	Details
-200	
-Response body
-Download
-{
-  "pageNumber": 1,
-  "pageSize": 1,
-  "totalPage": 0,
-  "totalRecord": 0,
-  "data": [],
-  "errors": [],
-  "statusCode": 200
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10403900f840935-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,23 Jun 2026 13:59:33 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=itq7FfBRWSj8A8xYff7M38hln0DSOMy%2Bw5c3ntG%2FN7tuqR4uofm9DnELuPV38odDuytHr8OzGW5yCoYd4KxoGhSa4s2bU47t8%2FxP%2BGXR1AAamYMVcPWu1hyYhREySX0SuGxpHjbhaeA%3D"}]} 
- server: cloudflare 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-GET
-/Color/get-color-by-id
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/Color/get-color-by-id?id=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Color/get-color-by-id?id=1
-Server response
-Code	Details
-200	
-Response body
-Download
-{
-    "data": {
-        "id": 1,
-        "colorName": "Red"
+      }
     },
-    "errors": [],
-    "statusCode": 200
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10403ae7c510ba5-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,
-23 Jun 2026 13: 59: 38 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=HnZpYl5ryLYFwOcRZMLD3JI%2FcGkljKBWekFYAGMr112mclFOFY8aAc5bduUrEewScqABPd3zwWY26i46QejrSQU1mDr2v1Ru%2FxWbpk4YSGk2OKZVL263EPW1t%2FnHQBK884hkzb59KyM%3D"
+    "/Category/update-category": {
+      "put": {
+        "tags": [
+          "Category"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "CategoryImage",
+                  "CategoryName",
+                  "Id"
+                ],
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CategoryImage": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CategoryName": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "CategoryImage": {
+                  "style": "form"
+                },
+                "CategoryName": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/Color/add-color
-
-Parameters
-Cancel
-Name	Description
-ColorName *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https: //store-api.softclub.tj/Color/add-color?ColorName=a' \
-  -H 'accept: * /*' \
-  -d ''
-Request URL
-https://store-api.softclub.tj/Color/add-color?ColorName=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10403da1da00ba5-WAW 
- date: Tue,23 Jun 2026 13:59:45 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=X72R%2BSa8yEpT786A9of%2FvQ9h4aOX5rS1RS2UsTSrJ4RUyoOl6Ak1TFk%2FSHE8tCGXle6HLb%2FA4CvJg%2BnmGsD1n%2B5lyzlyB7JOMDkr6QIQzB36meyh4Ofd3lKfry97GOvLzoxlIMgy0dQ%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/Color/update-color
-
-Parameters
-Cancel
-Name	Description
-Id *
-integer($int32)
-(query)
-1
-ColorName *
-string
-(query)
-q
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https://store-api.softclub.tj/Color/update-color?Id=1&ColorName=q' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Color/update-color?Id=1&ColorName=q
-Server response
-Code	Details
-200	
-Response body
-Download
-{
-    "data": 1,
-    "errors": [],
-    "statusCode": 200
-}
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10404058d1d0ba5-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,
-23 Jun 2026 13: 59: 52 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=85OINt6G0jegbUeouXV87in1Zx4BV1AFtz0DH%2FE94F34XK%2FR3r8Fz7s3jFrZkfp8dcDu%2B0UAG4DUGtAjztErS%2B0mcM6gx4J2GO%2BnE5g8elJBgvt4DC5dBf5t2WuTYAn1cbRLVLMwN2k%3D"
+      }
+    },
+    "/Category/delete-category": {
+      "delete": {
+        "tags": [
+          "Category"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/Color/delete-color
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https: //store-api.softclub.tj/Color/delete-color?id=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Color/delete-color?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10404287bcf0ba5-WAW 
- date: Tue,23 Jun 2026 13:59:57 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=5HxMBvLoSUkmyP0K7u2N9HnEs6Ax0Y7V4JWjKPg0HZwkxuIaaPooBTczH%2BIhK7tP6CGptxLbHSvhZKEN2vJyIi%2FI8TpuW7dsWuBLQrMSjAqBLLvfR5GcHcvuwmvw4wFYToXbyafBsqk%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-Product
-
-
-GET
-/Product/get-products
-
-Parameters
-Cancel
-Name	Description
-UserId
-string
-(query)
-a
-ProductName
-string
-(query)
-a
-MinPrice
-number($double)
-(query)
-1
-MaxPrice
-number($double)
-(query)
-2
-BrandId
-integer($int32)
-(query)
-1
-ColorId
-integer($int32)
-(query)
-1
-CategoryId
-integer($int32)
-(query)
-1
-SubcategoryId
-integer($int32)
-(query)
-1
-PageNumber
-integer($int32)
-(query)
-1
-PageSize
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/Product/get-products?UserId=a&ProductName=a&MinPrice=1&MaxPrice=2&BrandId=1&ColorId=1&CategoryId=1&SubcategoryId=1&PageNumber=1&PageSize=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Product/get-products?UserId=a&ProductName=a&MinPrice=1&MaxPrice=2&BrandId=1&ColorId=1&CategoryId=1&SubcategoryId=1&PageNumber=1&PageSize=1
-Server response
-Code	Details
-204
-Undocumented
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10404bd5ede0ba5-WAW 
- content-type: application/json; charset=utf-8 
- date: Tue,
-23 Jun 2026 14: 00: 21 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=1ofJqNuVXPb4VAzRnW2WxNrikAWbKISg1kocs4US7ZOZJp0jPtldy%2FC5wL07iaCT8c%2FRNpV2uTBh2tToeasEkX158l6XwDnZ8PKchd5Lh%2FmkCEOhb5dcN1TQKe9mzApfQd6x43RqNF8%3D"
+      }
+    },
+    "/Color/get-colors": {
+      "get": {
+        "tags": [
+          "Color"
+        ],
+        "parameters": [
+          {
+            "name": "ColorName",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-GET
-/Product/get-product-by-id
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https: //store-api.softclub.tj/Product/get-product-by-id?id=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Product/get-product-by-id?id=1
-Server response
-Code	Details
-404
-Undocumented
-Error: response status is 404
-
-Response body
-Download
-{
-  "data": null,
-  "errors": [
-    "Product not found"
-  ],
-  "statusCode": 404
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10404dc6c680ba5-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,23 Jun 2026 14:00:26 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=t7xf07PEy72e0PqOI7o%2BZe3zVOGDyBBM75czuErrARzq34y4LL5g9IDkrqigVrfgTL6GP2txcgMtVgnJQWOYtNCKfKnalcJ9UCXAW51%2FYYrBoZ1pFhqEjH3NKKSYNaNLW2z3GRNLiS4%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/Product/add-product
-
-Parameters
-Cancel
-Reset
-No parameters
-
-Request body
-
-multipart/form-data
-Images *
-array
-Add string item
-BrandId *
-integer($int32)
-1
-ColorId *
-integer($int32)
-1
-ProductName *
-string
-a
-Description *
-string
-a
-Quantity *
-integer($int32)
-1
-Weight
-string
-a
-Send empty value
-Size
-string
-a
-Send empty value
-Code *
-string
-a
-Price *
-number($double)
-1
-HasDiscount *
-boolean
-
-true
-DiscountPrice
-number($double)
-1
-Send empty value
-SubCategoryId *
-integer($int32)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https://store-api.softclub.tj/Product/add-product' \
-  -H 'accept: */*' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'Size=a' \
-  -F 'BrandId=1' \
-  -F 'DiscountPrice=1' \
-  -F 'Price=1' \
-  -F 'Quantity=1' \
-  -F 'Code=a' \
-  -F 'Weight=a' \
-  -F 'SubCategoryId=1' \
-  -F 'ProductName=a' \
-  -F 'HasDiscount=true' \
-  -F 'Description=a' \
-  -F 'ColorId=1'
-Request URL
-https: //store-api.softclub.tj/Product/add-product
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10405b6ab680935-WAW 
- content-length: 0 
- date: Tue,
-23 Jun 2026 14: 01: 01 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=7O8qq6mFprx4AUpXtXWCCvS0surW0UcfCND5BGiXe%2F12o2W7uhNM4lWLc2sdTkixv7JKIBdMUpo%2B5ORGnzaJyy1V2niiABAsQrt9SWLa%2B8gP37USd%2B2ZDTKiQs7ieH4JrlkAtkbDcSE%3D"
+      }
+    },
+    "/Color/get-color-by-id": {
+      "get": {
+        "tags": [
+          "Color"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/Product/update-product
-
-Parameters
-Cancel
-Name	Description
-Id *
-integer($int32)
-(query)
-1
-BrandId *
-integer($int32)
-(query)
-1
-ColorId *
-integer($int32)
-(query)
-1
-ProductName *
-string
-(query)
-a
-Description *
-string
-(query)
-a
-Quantity *
-integer($int32)
-(query)
-1
-Weight
-string
-(query)
-1
-Size
-string
-(query)
-a
-Code *
-string
-(query)
-a
-Price *
-number($double)
-(query)
-1
-HasDiscount *
-boolean
-(query)
-
-false
-DiscountPrice
-number($double)
-(query)
-1
-SubCategoryId *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https: //store-api.softclub.tj/Product/update-product?Id=1&BrandId=1&ColorId=1&ProductName=a&Description=a&Quantity=1&Weight=1&Size=a&Code=a&Price=1&HasDiscount=false&DiscountPrice=1&SubCategoryId=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Product/update-product?Id=1&BrandId=1&ColorId=1&ProductName=a&Description=a&Quantity=1&Weight=1&Size=a&Code=a&Price=1&HasDiscount=false&DiscountPrice=1&SubCategoryId=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104066d38cd0935-WAW 
- content-length: 0 
- date: Tue,23 Jun 2026 14:01:30 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wTXRC5NTn5XG%2FxgfqiS325ktKis3iSgjPSmlhDcC40u1vqPUQ%2Bn1C8r6wluQt3A8yj5z%2Fv3xVEbP%2FUP%2Fksr33k7pTVOsqigvqwsQNhgbD9ySEHmrmPaY2AARZ8mge3DlLBLGiOxI4V8%3D"}]} 
- server: cloudflare 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/Product/add-image-to-product
-
-Parameters
-Cancel
-Reset
-No parameters
-
-Request body
-
-multipart/form-data
-ProductId *
-integer($int32)
-1
-Files *
-array
-Add string item
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https://store-api.softclub.tj/Product/add-image-to-product' \
-  -H 'accept: */*' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'ProductId=1'
-Request URL
-https: //store-api.softclub.tj/Product/add-image-to-product
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10406a1986bb90b-WAW 
- date: Tue,
-23 Jun 2026 14: 01: 38 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=58%2FHA3epl%2BkjkvNFH88HNLfYzSu7810FBGfSDgAZyYmoTuHStNglCKwboAISAr5whMSxn%2FonOuHuKr0T%2F%2BzAxybWc8eymgPZpWWF3JgG96QkpoNxqCK40vT3XHh1rLv%2F4TasStG%2BAO4%3D"
+      }
+    },
+    "/Color/add-color": {
+      "post": {
+        "tags": [
+          "Color"
+        ],
+        "parameters": [
+          {
+            "name": "ColorName",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/Product/delete-image-from-product
-
-Parameters
-Cancel
-Name	Description
-imageId *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https: //store-api.softclub.tj/Product/delete-image-from-product?imageId=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/Product/delete-image-from-product?imageId=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10406c72f21b90b-WAW 
- date: Tue,23 Jun 2026 14:01:44 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=lG5ewmDBLoFdUXJJB161w%2Btj5OkuTq4%2Bi567U8em6Lm3YxxWkeJ0r3sa%2F2lAjL6L%2F%2FsulDJ%2FcxqrSKoBAEJd7Y76NI%2F%2FQ2jOQQ%2B6iUxjeZ%2FJM%2BerCO63cd2uMfo4CZWBgSJ454MIEhY%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/Product/delete-product
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https://store-api.softclub.tj/Product/delete-product?id=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/Product/delete-product?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10406e83d02b90b-WAW 
- date: Tue,
-23 Jun 2026 14: 01: 50 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=adxXpZ4%2FcD8F0Fo%2BSizAMLLSTJFYsoF%2BHPkuMhzkMKAv%2F%2BgbHrd4288b3eYlxWp63ysC1lVhxHGYfHbf2pi7XoAs%2BmgXYJ5XMtYbPYLDFXErXYG6S%2BN30BebEav2is7qpEXQcJY2N4A%3D"
+      }
+    },
+    "/Color/update-color": {
+      "put": {
+        "tags": [
+          "Color"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ColorName",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-SubCategory
-
-
-GET
-/SubCategory/get-sub-category
-
-Parameters
-Cancel
-No parameters
-
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https: //store-api.softclub.tj/SubCategory/get-sub-category' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/SubCategory/get-sub-category
-Server response
-Code	Details
-200	
-Response body
-Download
-{
-  "data": [
-    {
-      "id": 151,
-      "subCategoryName": "Samsung"
+      }
+    },
+    "/Color/delete-color": {
+      "delete": {
+        "tags": [
+          "Color"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Product/get-products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "UserId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ProductName",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MinPrice",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "MaxPrice",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "BrandId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ColorId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "CategoryId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "SubcategoryId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Product/get-product-by-id": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Product/add-product": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "BrandId",
+                  "Code",
+                  "ColorId",
+                  "Description",
+                  "HasDiscount",
+                  "Images",
+                  "Price",
+                  "ProductName",
+                  "Quantity",
+                  "SubCategoryId"
+                ],
+                "type": "object",
+                "properties": {
+                  "Images": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "BrandId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "ColorId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "ProductName": {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  "Description": {
+                    "maxLength": 500,
+                    "type": "string"
+                  },
+                  "Quantity": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Weight": {
+                    "type": "string"
+                  },
+                  "Size": {
+                    "type": "string"
+                  },
+                  "Code": {
+                    "type": "string"
+                  },
+                  "Price": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "HasDiscount": {
+                    "type": "boolean"
+                  },
+                  "DiscountPrice": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "SubCategoryId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Images": {
+                  "style": "form"
+                },
+                "BrandId": {
+                  "style": "form"
+                },
+                "ColorId": {
+                  "style": "form"
+                },
+                "ProductName": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Quantity": {
+                  "style": "form"
+                },
+                "Weight": {
+                  "style": "form"
+                },
+                "Size": {
+                  "style": "form"
+                },
+                "Code": {
+                  "style": "form"
+                },
+                "Price": {
+                  "style": "form"
+                },
+                "HasDiscount": {
+                  "style": "form"
+                },
+                "DiscountPrice": {
+                  "style": "form"
+                },
+                "SubCategoryId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Product/update-product": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "BrandId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32" 
+            }
+          },
+          {
+            "name": "ColorId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ProductName",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Description",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "maxLength": 500,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Quantity",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Weight",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Size",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Code",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Price",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "HasDiscount",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "DiscountPrice",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "SubCategoryId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Product/add-image-to-product": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Files",
+                  "ProductId"
+                ],
+                "type": "object",
+                "properties": {
+                  "ProductId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "ProductId": {
+                  "style": "form"
+                },
+                "Files": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Product/delete-image-from-product": {
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "imageId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Product/delete-product": {
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/SubCategory/get-sub-category": {
+      "get": {
+        "tags": [
+          "SubCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/SubCategory/get-sub-category-by-id": {
+      "get": {
+        "tags": [
+          "SubCategory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/SubCategory/add-sub-category": {
+      "post": {
+        "tags": [
+          "SubCategory"
+        ],
+        "parameters": [
+          {
+            "name": "CategoryId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "SubCategoryName",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/SubCategory/update-sub-category": {
+      "put": {
+        "tags": [
+          "SubCategory"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "CategoryId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "SubCategoryName",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/SubCategory/delete-sub-category": {
+      "delete": {
+        "tags": [
+          "SubCategory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/UserProfile/get-user-profiles": {
+      "get": {
+        "tags": [
+          "UserProfile"
+        ],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/UserProfile/get-user-profile-by-id": {
+      "get": {
+        "tags": [
+          "UserProfile"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/UserProfile/update-user-profile": {
+      "put": {
+        "tags": [
+          "UserProfile"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Dob",
+                  "Email",
+                  "FirstName",
+                  "Image",
+                  "LastName",
+                  "PhoneNumber"
+                ],
+                "type": "object",
+                "properties": {
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "FirstName": {
+                    "type": "string"
+                  },
+                  "LastName": {
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "PhoneNumber": {
+                    "type": "string",
+                    "format": "tel"
+                  },
+                  "Dob": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              },
+              "encoding": {
+                "Image": {
+                  "style": "form"
+                },
+                "FirstName": {
+                  "style": "form"
+                },
+                "LastName": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "PhoneNumber": {
+                  "style": "form"
+                },
+                "Dob": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/UserProfile/delete-user": {
+      "delete": {
+        "tags": [
+          "UserProfile"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/UserProfile/addrole-from-user": {
+      "post": {
+        "tags": [
+          "UserProfile"
+        ],
+        "parameters": [
+          {
+            "name": "UserId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RoleId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/UserProfile/remove-role-from-user": {
+      "delete": {
+        "tags": [
+          "UserProfile"
+        ],
+        "parameters": [
+          {
+            "name": "UserId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RoleId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/UserProfile/get-user-roles": {
+      "get": {
+        "tags": [
+          "UserProfile"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
-  ],
-  "errors": [],
-  "statusCode": 200
+  },
+  "components": {
+    "schemas": {
+      "Domain.Dtos.AccountDtos.LoginDto": {
+        "required": [
+          "password",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Domain.Dtos.AccountDtos.RegisterDto": {
+        "required": [
+          "confirmPassword",
+          "email",
+          "password",
+          "phoneNumber",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "minLength": 1,
+            "type": "string",
+            "format": "tel"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string",
+            "format": "password"
+          },
+          "confirmPassword": {
+            "minLength": 1,
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abc-def\"",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
 }
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104071bfddfb90b-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,23 Jun 2026 14:01:58 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Cb0Mp5o%2FMU%2Fn02Y8Q35p415TwZLn%2BRRMs66NskJOpl3TR7FaPQG1IeSVy8AmRu6ZEs9w9OyvLOlm%2FM9sAllk2lxoULrD%2B7iI7RqycSsv9fEMiNpqza8QACNjBQUAKz%2BHnb9RSNKNvWs%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-GET
-/SubCategory/get-sub-category-by-id
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/SubCategory/get-sub-category-by-id?id=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/SubCategory/get-sub-category-by-id?id=1
-Server response
-Code	Details
-404
-Undocumented
-Error: response status is 404
-
-Response body
-Download
-{
-    "data": null,
-    "errors": [
-        "SubCategory not found!"
-    ],
-    "statusCode": 404
-}
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104073faca4b90b-WAW 
- content-encoding: zstd 
- content-type: application/json; charset=utf-8 
- date: Tue,
-23 Jun 2026 14: 02: 04 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=2z%2BeyySbH%2BatF15QVrJDF9Phs6DaaTmi0K%2Bf7UcxIg7kEWYdcHu1k8TF4TaMTPDZ4HE1N%2Bquxj5kJBB4rePuTvoGG8oIZwRfd05gRA6C0hCVp9PMFQQb6Ei4qHkfa3jNcvacrp0h06I%3D"
-        }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/SubCategory/add-sub-category
-
-Parameters
-Cancel
-Name	Description
-CategoryId *
-integer($int32)
-(query)
-1
-SubCategoryName *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https: //store-api.softclub.tj/SubCategory/add-sub-category?CategoryId=1&SubCategoryName=a' \
-  -H 'accept: * /*' \
-  -d ''
-Request URL
-https://store-api.softclub.tj/SubCategory/add-sub-category?CategoryId=1&SubCategoryName=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104076cab8bb90b-WAW 
- date: Tue,23 Jun 2026 14:02:11 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2B%2Fw%2F%2B8P50Fax0%2BPhm7gfJKvFI%2FlKcHdXOm4pOW8P8hBwM09YLd3HGTya%2BixuJDDIhRxS1Gs86Sd9fcoGgUl5K0E9%2Bzj7mX%2BObGm%2Fytx4YXEywdbmwfVF3x0gLngqnn3Ld%2FalMy3dsPg%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/SubCategory/update-sub-category
-
-Parameters
-Cancel
-Name	Description
-Id *
-integer($int32)
-(query)
-1
-CategoryId *
-integer($int32)
-(query)
-1
-SubCategoryName *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https://store-api.softclub.tj/SubCategory/update-sub-category?Id=1&CategoryId=1&SubCategoryName=a' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/SubCategory/update-sub-category?Id=1&CategoryId=1&SubCategoryName=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10407d12e31b90b-WAW 
- date: Tue,
-23 Jun 2026 14: 02: 27 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=H81beXwIPMkRfEju7om%2BEt9fgZNVTagokaNkbuKLmxSTw3vX1jbcDz2%2BYKlDik8TIvqk9Kz9Nm20kq6eyFMVg7ysHbcs5IyeUUr64s%2BiVBCYyXj3stegNVWF2sytQWUiCppq0eEI7%2Bc%3D"
-        }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/SubCategory/delete-sub-category
-
-Parameters
-Cancel
-Name	Description
-id *
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https: //store-api.softclub.tj/SubCategory/delete-sub-category?id=1' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/SubCategory/delete-sub-category?id=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10407f50e59b90b-WAW 
- date: Tue,23 Jun 2026 14:02:33 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gw9tT11MsdQqil7bs%2FKY3VFzWIrPu460S1UmzT2zUNdSpcUbU0zoG4Ehq3JatlBCRgVmsIPyraX0qSljvMgUxmMnfW9SnmET1cMLVG%2BKblTgiRZpJbdeo0ZfvBbNGZ36gCOM3nW%2BsAw%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-UserProfile
-
-
-GET
-/UserProfile/get-user-profiles
-
-Parameters
-Cancel
-Name	Description
-UserName
-string
-(query)
-a
-PageNumber
-integer($int32)
-(query)
-1
-PageSize
-integer($int32)
-(query)
-1
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/UserProfile/get-user-profiles?UserName=a&PageNumber=1&PageSize=1' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/UserProfile/get-user-profiles?UserName=a&PageNumber=1&PageSize=1
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10408327a69b90b-WAW 
- date: Tue,
-23 Jun 2026 14: 02: 43 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=7efdfH0Vix5gFLXW%2Fr7fKXkw%2FUAxkY3jp0qMyYpWKibgOwcmYki%2F9s3ox0itD0WbOa7VthVlmI13xEnP6ChEL%2FTWUlUqsC5BM%2BcbXH8fayvSxCSoBdqGjlFo7I0gPOTYqltBFRbuURk%3D"
-        }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-GET
-/UserProfile/get-user-profile-by-id
-
-Parameters
-Cancel
-Name	Description
-id *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https: //store-api.softclub.tj/UserProfile/get-user-profile-by-id?id=a' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/UserProfile/get-user-profile-by-id?id=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104085d794fb90b-WAW 
- date: Tue,23 Jun 2026 14:02:49 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=D1jCt5Z%2BVEaxZwAyr955GO1ZeslkmOYcLTOKOr%2FgcLPbHTreOJ3qnVOWmg%2FJsVW8s4pWyNnfuqL4v9URG39vcCE3FduDkikiqg9ib7wGTQaEQbsBzo4Wz1mBGdhR6UxPHXSmuVApeUQ%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-PUT
-/UserProfile/update-user-profile
-
-Parameters
-Cancel
-Reset
-No parameters
-
-Request body
-
-multipart/form-data
-Image *
-string($binary)
-map.jpg
-FirstName *
-string
-q
-LastName *
-string
-q
-Email *
-string($email)
-a
-PhoneNumber *
-string($tel)
-a
-Dob *
-string($date)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'PUT' \
-  'https://store-api.softclub.tj/UserProfile/update-user-profile' \
-  -H 'accept: */*' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'Image=@map.jpg;type=image/jpeg' \
-  -F 'FirstName=q' \
-  -F 'LastName=q' \
-  -F 'Email=a' \
-  -F 'PhoneNumber=a' \
-  -F 'Dob=a'
-Request URL
-https: //store-api.softclub.tj/UserProfile/update-user-profile
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10408ed5ce3b90b-WAW 
- date: Tue,
-23 Jun 2026 14: 03: 13 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=U1aJ9uahGEiVf%2BXU97Gj3iR33SLj1sfHe77mpEE9KeMZt7czj9U1k8OMlyfvw6uLoA%2F0HJ9dQnnzLuFRYMX2gcgpMPjyo6Kh7RbRC2gvCvE6PRB0dnz%2F%2B94SA35CjAiVBRZR8%2FaNtu0%3D"
-        }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/UserProfile/delete-user
-
-Parameters
-Cancel
-Name	Description
-id *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https: //store-api.softclub.tj/UserProfile/delete-user?id=a' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/UserProfile/delete-user?id=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104091dece4b90b-WAW 
- date: Tue,23 Jun 2026 14:03:20 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=V7UqZVe2ZC46DrJcv1Lfzx2ELykp2Gj2yWT%2Fx%2F%2B7IhCyxS3mFgMRz6OzZv7rE4Cuj%2BvIzlJLkmHDF2rw47YbW%2Fs4g237tydcIviij6A2odmJBBU%2F72fsqkEawU3IEVn7W3xgpm1%2BNeE%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-POST
-/UserProfile/addrole-from-user
-
-Parameters
-Cancel
-Name	Description
-UserId *
-string
-(query)
-a
-RoleId *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'POST' \
-  'https://store-api.softclub.tj/UserProfile/addrole-from-user?UserId=a&RoleId=a' \
-  -H 'accept: */*' \
-  -d ''
-Request URL
-https: //store-api.softclub.tj/UserProfile/addrole-from-user?UserId=a&RoleId=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https: //store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104094a3cc1b90b-WAW 
- date: Tue,
-23 Jun 2026 14: 03: 27 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=WOAt7AVFC7YU1%2BWbqckRICbL8vHj6ZJ2Q%2BHXLPqqT6RtCGss%2B36gPxX7xu93buF%2FqBnCuqDFtWPbjgnnCN0fvrBxpI7HIToD3pgfVKPtZVATpiMOB7zCs%2FTl1t%2F81n7Kph2ijOnIfT0%3D"
-        }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-DELETE
-/UserProfile/remove-role-from-user
-
-Parameters
-Cancel
-Name	Description
-UserId *
-string
-(query)
-a
-RoleId *
-string
-(query)
-a
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'DELETE' \
-  'https: //store-api.softclub.tj/UserProfile/remove-role-from-user?UserId=a&RoleId=a' \
-  -H 'accept: * /*'
-Request URL
-https://store-api.softclub.tj/UserProfile/remove-role-from-user?UserId=a&RoleId=a
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- access-control-allow-origin: https://store-api.softclub.tj 
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a104098aca18b90b-WAW 
- date: Tue,23 Jun 2026 14:03:38 GMT 
- nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800} 
- priority: u=1,i 
- report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tDyLwXyHwfG1R8sL6PBSW%2Fvxyg6NHFOErnug5FDk6x1bMzMpbUoGlh5iaUW0BXNDxPHE7UajcYxd3rHhfiV9z7SYLHtkKIbdWBLtmrwvXrAr9x5gIl%2FLk7J%2BSjF%2F%2FdVT7fA2q5V7SgQ%3D"}]} 
- server: cloudflare 
- server-timing: cfExtPri 
- vary: Origin 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-
-GET
-/UserProfile/get-user-roles
-
-Parameters
-Cancel
-No parameters
-
-Execute
-Clear
-Responses
-Curl
-
-curl -X 'GET' \
-  'https://store-api.softclub.tj/UserProfile/get-user-roles' \
-  -H 'accept: */*'
-Request URL
-https: //store-api.softclub.tj/UserProfile/get-user-roles
-Server response
-Code	Details
-401
-Undocumented
-Error: response status is 401
-
-Response headers
- alt-svc: h3=":443"; ma=86400 
- cf-cache-status: DYNAMIC 
- cf-ray: a10409b088a1b90b-WAW 
- date: Tue,
-23 Jun 2026 14: 03: 44 GMT 
- nel: {
-    "report_to": "cf-nel",
-    "success_fraction": 0.0,
-    "max_age": 604800
-} 
- priority: u=1,i 
- report-to: {
-    "group": "cf-nel",
-    "max_age": 604800,
-    "endpoints": [
-        {
-            "url": "https://a.nel.cloudflare.com/report/v4?s=4UXEYfMbS5xhVq04BLsQ4G6CAygdA7S9%2FK6GzdWWgPgMpS%2F9%2BrRT1QlqnzUCsg0BWaI4v%2F%2FOPh5R6GqAhmYFh2S2VLtmwPemTmWimpsbbVZJjyp0W8iChwrDcr%2BWjXRjgJb36mXE6DY%3D"
-        }
-    ]
-} 
- server: cloudflare 
- server-timing: cfExtPri 
- www-authenticate: Bearer 
-Responses
-Code	Description	Links
-200	
-Success
-
-No links
-

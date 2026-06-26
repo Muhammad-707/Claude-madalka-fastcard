@@ -10,11 +10,13 @@
   "nav": {
     "dashboard": "Dashboard",
     "orders": "Orders",
+    "customers": "Customers",
     "products": "Products",
     "other": "Other",
     "categories": "Categories",
     "brands": "Brands",
     "banners": "Banners",
+    "subCategory": "Sub Categories",
     "logout": "Log out"
   },
   "dashboard": {
@@ -30,7 +32,7 @@
     "units": "units"
   },
   "users": {
-    "title": "Orders",
+    "title": "Customers",
     "addUser": "Add user",
     "search": "Search...",
     "role": "Role",
@@ -38,11 +40,14 @@
     "username": "Username",
     "email": "Email",
     "phone": "Phone",
-    "allRoles": "All roles"
+    "allRoles": "All roles",
+    "dob": "Date of birth",
+    "photo": "Photo",
+    "photoHint": "Leave empty to keep current photo"
   },
   "products": {
     "title": "Products",
-    "addNew": "+ Add order",
+    "addNew": "+ Add product",
     "edit": "Edit",
     "delete": "Delete",
     "price": "Price",
@@ -116,6 +121,14 @@
     "mainSliders": "Main Sliders",
     "bannerSection": "Banner Section"
   },
+  "subCategory": {
+    "title": "Sub Categories",
+    "add": "Add sub category",
+    "edit": "Edit sub category",
+    "deleteConfirm": "Delete sub category?",
+    "name": "Sub category name",
+    "selectCategory": "Select category"
+  },
   "common": {
     "confirmDelete": "Are you sure you want to delete?",
     "confirmDeleteCount": "Delete {{count}} selected items?",
@@ -138,7 +151,7 @@
     "noOrders": "No orders yet",
     "noData": "No data",
     "addFirstProduct": "Add your first product",
-    "noOrdersYet": "No orders yet"
+    "noOrdersYet": "No customers yet"
   },
   "errors": {
     "network": "Network error. Please try again.",

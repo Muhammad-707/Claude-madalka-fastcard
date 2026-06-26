@@ -12,47 +12,47 @@ export function RecentCustomers({ users, isLoading }: RecentCustomersProps) {
   const { t } = useTranslation()
 
   return (
-    <div className="bg-card border rounded-xl p-4">
+    <div className="bg-card border rounded-xl p-4 overflow-hidden">
       <h3 className="text-sm font-semibold mb-4">{t('dashboard.recentCustomers')}</h3>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="text-muted-foreground text-xs">
-              <th className="text-left pb-3 font-medium">{t('users.username')}</th>
-              <th className="text-left pb-3 font-medium">{t('users.email')}</th>
-              <th className="text-right pb-3 font-medium">{t('users.role')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {isLoading
-              ? Array.from({ length: 6 }).map((_, i) => (
-                  <tr key={i}>
-                    <td colSpan={3} className="py-1.5">
-                      <Skeleton className="h-8 w-full" />
-                    </td>
-                  </tr>
-                ))
-              : users.map((user) => (
-                  <tr
-                    key={user.id}
-                    className="border-t border-border/40 hover:bg-muted/30 transition-colors"
-                  >
-                    <td className="py-2.5 font-medium">
-                      {user.userName ?? `${user.firstName} ${user.lastName}`}
-                    </td>
-                    <td className="py-2.5 text-muted-foreground max-w-[180px] truncate">
-                      {user.email}
-                    </td>
-                    <td className="py-2.5 text-right">
-                      <Badge variant={user.role === 'Admin' || user.role === 'SuperAdmin' ? 'default' : 'secondary'}>
-                        {user.role ?? 'User'}
-                      </Badge>
-                    </td>
-                  </tr>
-                ))}
-          </tbody>
-        </table>
+      {/* Fixed header — stays visible during scroll */}
+      <div className="grid grid-cols-[1fr_1fr_auto] gap-3 text-xs text-muted-foreground font-medium pb-3 border-b border-border/40">
+        <span>{t('users.username')}</span>
+        <span>{t('users.email')}</span>
+        <span className="text-right">{t('users.role')}</span>
+      </div>
+
+      {/* Scrollable rows — exactly 6 rows visible (6 × 40px = 240px) */}
+      <div className="overflow-y-auto max-h-[240px] scrollbar-hidden overscroll-contain">
+        {isLoading
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="py-1.5">
+                <Skeleton className="h-8 w-full" />
+              </div>
+            ))
+          : users.map((user) => (
+              <div
+                key={user.userId || user.id}
+                className="grid grid-cols-[1fr_1fr_auto] gap-3 items-center py-2.5 border-b border-border/40 hover:bg-muted/30 transition-colors"
+              >
+                <span className="text-sm font-medium truncate min-w-0">
+                  {user.userName ?? `${user.firstName} ${user.lastName}`}
+                </span>
+                <span className="text-sm text-muted-foreground truncate min-w-0">
+                  {user.email}
+                </span>
+                <Badge
+                  variant={
+                    (user.role ?? user.userRoles?.[0]?.name) === 'Admin' ||
+                    (user.role ?? user.userRoles?.[0]?.name) === 'SuperAdmin'
+                      ? 'default'
+                      : 'secondary'
+                  }
+                >
+                  {user.role ?? user.userRoles?.[0]?.name ?? 'User'}
+                </Badge>
+              </div>
+            ))}
       </div>
     </div>
   )

@@ -3,11 +3,11 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
   LayoutDashboard,
-  ClipboardList,
+  Users,
   Package,
   Boxes,
   Tag,
-  Image,
+  Layers,
   ChevronDown,
   ChevronUp,
   ShoppingCart,
@@ -15,7 +15,7 @@ import {
 import { cn } from '@/shared/lib/utils'
 import { Sheet, SheetContent } from '@/shared/ui/sheet'
 
-const OTHER_PATHS = ['/categories', '/brands', '/banners']
+const OTHER_PATHS = ['/categories', '/brands', '/sub-categories']
 
 interface SidebarProps {
   open?: boolean
@@ -43,8 +43,8 @@ function SidebarContent() {
         {/* Dashboard */}
         <NavItem to="/dashboard" icon={LayoutDashboard} label={t('nav.dashboard')} />
 
-        {/* Orders → Users */}
-        <NavItem to="/users" icon={ClipboardList} label={t('nav.orders')} />
+        {/* Customers */}
+        <NavItem to="/users" icon={Users} label={t('nav.customers')} />
 
         {/* Products */}
         <NavItem to="/products" icon={Package} label={t('nav.products')} />
@@ -72,7 +72,7 @@ function SidebarContent() {
             <div className="mt-1 ml-4 pl-4 border-l border-sidebar-border space-y-1">
               <NavItem to="/categories" icon={Tag} label={t('nav.categories')} sub />
               <NavItem to="/brands" icon={Boxes} label={t('nav.brands')} sub />
-              <NavItem to="/banners" icon={Image} label={t('nav.banners')} sub />
+              <NavItem to="/sub-categories" icon={Layers} label={t('nav.subCategory')} sub />
             </div>
           )}
         </div>

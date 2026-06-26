@@ -57,10 +57,9 @@ export function useProductCreate() {
   const hasDiscount = form.watch('hasDiscount')
 
   const { data: categories } = useGetCategoriesQuery()
-  const { data: subCategories } = useGetSubCategoriesQuery(
-    selectedCategoryId > 0 ? selectedCategoryId : undefined,
-    { skip: !selectedCategoryId || selectedCategoryId === 0 },
-  )
+  const { data: subCategories } = useGetSubCategoriesQuery(selectedCategoryId, {
+    skip: selectedCategoryId === 0,
+  })
   const { data: brandsData } = useGetBrandsQuery({ PageSize: 100 })
 
   const brands = brandsData?.data ?? []

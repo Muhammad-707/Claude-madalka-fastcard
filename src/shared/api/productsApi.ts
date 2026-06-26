@@ -8,12 +8,24 @@ export const productsApi = baseApi.injectEndpoints({
         url: '/Product/get-products',
         params: params ?? {},
         responseHandler: async (response: Response) => {
-          if (response.status === 204) {
-            return { data: [], totalRecord: 0, totalPage: 0, pageNumber: 1, pageSize: 10, errors: [], statusCode: 204 }
-          }
-          const json = await response.json()
-          // Server wraps paginated response: { data: Paginated<T>, errors, statusCode }
-          return json?.data ?? json
+          const EMPTY: Paginated<Product> = { pageNumber: 1, pageSize: 10, totalPage: 0, totalRecord: 0, data: [], errors: [], statusCode: 200 }
+          if (response.status === 204) return EMPTY
+          const json = await response.json().catch(() => null) as Record<string, unknown> | null
+          if (!json) return EMPTY
+          // Actual response: { pageNumber, pageSize, totalPage, totalRecord,
+          //   data: { products: Product[], colors: [], brands: [], minMaxPrice: {} },
+          //   errors, statusCode }
+          const inner = json.data as Record<string, unknown> | null
+          const products = inner?.products
+          return {
+            pageNumber: (json.pageNumber as number) ?? 1,
+            pageSize: (json.pageSize as number) ?? 10,
+            totalPage: (json.totalPage as number) ?? 0,
+            totalRecord: (json.totalRecord as number) ?? 0,
+            data: Array.isArray(products) ? (products as Product[]) : [],
+            errors: (json.errors as string[]) ?? [],
+            statusCode: (json.statusCode as number) ?? 200,
+          } satisfies Paginated<Product>
         },
       }),
       providesTags: ['Product'],

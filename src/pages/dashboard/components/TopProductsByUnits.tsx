@@ -14,7 +14,7 @@ export function TopProductsByUnits({ products, isLoading }: TopProductsByUnitsPr
   const sorted = [...products].sort((a, b) => b.quantity - a.quantity)
 
   return (
-    <div className="bg-card border rounded-xl p-4">
+    <div className="bg-card border rounded-xl p-4 overflow-hidden">
       <h3 className="text-sm font-semibold mb-4">{t('dashboard.topByUnits')}</h3>
 
       <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 text-xs text-muted-foreground mb-2">
@@ -23,10 +23,7 @@ export function TopProductsByUnits({ products, isLoading }: TopProductsByUnitsPr
         <span className="text-right">{t('dashboard.units')}</span>
       </div>
 
-      <div
-        className="space-y-3 overflow-y-auto max-h-60 scrollbar-hidden"
-        style={{ scrollbarWidth: 'none' }}
-      >
+      <div className="space-y-3 overflow-y-auto max-h-[252px] scrollbar-hidden overscroll-contain">
         {isLoading
           ? Array.from({ length: 5 }).map((_, i) => (
               <Skeleton key={i} className="h-10 w-full" />
@@ -37,9 +34,9 @@ export function TopProductsByUnits({ products, isLoading }: TopProductsByUnitsPr
                 className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-2"
               >
                 <div className="w-8 h-8 rounded-md bg-muted flex-shrink-0 overflow-hidden">
-                  {product.images?.[0] ? (
+                  {product.image ? (
                     <img
-                      src={getImageUrl(product.images[0].imageName)}
+                      src={getImageUrl(product.image)}
                       alt={product.productName}
                       className="w-full h-full object-cover"
                     />

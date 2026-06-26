@@ -12,7 +12,7 @@ const ProductCreatePage = lazy(() => import('@/pages/product-create'))
 const ProductEditPage = lazy(() => import('@/pages/product-edit'))
 const CategoriesPage = lazy(() => import('@/pages/categories'))
 const BrandsPage = lazy(() => import('@/pages/brands'))
-const BannersPage = lazy(() => import('@/pages/banners'))
+const SubCategoriesPage = lazy(() => import('@/pages/sub-categories'))
 const NotFoundPage = lazy(() => import('@/pages/not-found'))
 
 function s(node: ReactNode) {
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
           { path: '/products/:id/edit', element: s(<ProductEditPage />) },
           { path: '/categories', element: s(<CategoriesPage />) },
           { path: '/brands', element: s(<BrandsPage />) },
-          { path: '/banners', element: s(<BannersPage />) },
+          { path: '/sub-categories', element: s(<SubCategoriesPage />) },
         ],
       },
     ],

@@ -34,9 +34,9 @@ export function TopSellingProducts({ products, isLoading }: TopSellingProductsPr
           : products.map((product) => (
               <div key={product.id} className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-muted flex-shrink-0 overflow-hidden">
-                  {product.images?.[0] ? (
+                  {product.image ? (
                     <img
-                      src={getImageUrl(product.images[0].imageName)}
+                      src={getImageUrl(product.image)}
                       alt={product.productName}
                       className="w-full h-full object-cover"
                     />
@@ -48,7 +48,7 @@ export function TopSellingProducts({ products, isLoading }: TopSellingProductsPr
                   <p className="text-sm font-medium leading-tight truncate">
                     {product.productName}
                   </p>
-                  <p className="text-xs text-muted-foreground">{product.brandName ?? '—'}</p>
+                  <p className="text-xs text-muted-foreground">{product.color ?? product.categoryName ?? '—'}</p>
                 </div>
                 <div className="text-right flex-shrink-0">
                   <p className="text-sm font-semibold">{product.quantity.toLocaleString()}</p>

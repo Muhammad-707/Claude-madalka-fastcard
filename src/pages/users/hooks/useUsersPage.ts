@@ -6,13 +6,21 @@ import { useGetUsersQuery, useDeleteUserMutation } from '@/shared/api/usersApi'
 import { useDebounce } from '@/shared/hooks/useDebounce'
 import type { UserProfile } from '@/shared/api/types'
 
+function getUserId(u: UserProfile): string {
+  return u.userId || u.id
+}
+
+function getUserRole(u: UserProfile): string {
+  return (u.role ?? u.userRoles?.[0]?.name ?? '').toLowerCase()
+}
+
 export function useUsersPage() {
   const { t } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
 
   const page = Math.max(1, Number(searchParams.get('page') ?? '1'))
   const [search, setSearch] = useState('')
-  const debouncedSearch = useDebounce(search)
+  const debouncedSearch = useDebounce(search, 300)
   const [roleFilter, setRoleFilter] = useState<string>('all')
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [deleteIds, setDeleteIds] = useState<string[] | null>(null)
@@ -30,9 +38,9 @@ export function useUsersPage() {
   const allUsers = data?.data ?? []
   const filteredUsers = roleFilter === 'all'
     ? allUsers
-    : allUsers.filter((u) => (u.role ?? '').toLowerCase() === roleFilter.toLowerCase())
+    : allUsers.filter((u) => getUserRole(u) === roleFilter.toLowerCase())
 
-  const allIds = filteredUsers.map((u) => u.id)
+  const allIds = filteredUsers.map(getUserId)
   const allSelected = allIds.length > 0 && allIds.every((id) => selectedIds.includes(id))
   const someSelected = selectedIds.length > 0
 
@@ -96,5 +104,6 @@ export function useUsersPage() {
     setEditUser,
     showAddDialog,
     setShowAddDialog,
+    getUserId,
   }
 }

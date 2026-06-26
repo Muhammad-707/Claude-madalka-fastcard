@@ -66,9 +66,9 @@ export function ProductTable({
                 className="mt-1"
               />
               <div className="w-12 h-12 rounded-lg bg-muted flex-shrink-0 overflow-hidden flex items-center justify-center">
-                {product.images?.[0] ? (
+                {product.image ? (
                   <img
-                    src={getImageUrl(product.images[0].imageName)}
+                    src={getImageUrl(product.image)}
                     alt={product.productName}
                     className="w-full h-full object-cover"
                   />
@@ -161,9 +161,9 @@ export function ProductTable({
                   <td className="py-3 pr-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-muted flex-shrink-0 overflow-hidden flex items-center justify-center">
-                        {product.images?.[0] ? (
+                        {product.image ? (
                           <img
-                            src={getImageUrl(product.images[0].imageName)}
+                            src={getImageUrl(product.image)}
                             alt={product.productName}
                             className="w-full h-full object-cover"
                           />

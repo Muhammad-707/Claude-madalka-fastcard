@@ -69,16 +69,16 @@ export function useProductEdit() {
   useEffect(() => {
     if (product) {
       form.reset({
-        productName: product.productName,
-        code: product.code,
-        description: product.description,
-        categoryId: 0,
-        subCategoryId: product.subCategoryId,
-        brandId: product.brandId,
-        colorId: product.colorId,
-        quantity: product.quantity,
-        price: product.price,
-        hasDiscount: product.hasDiscount,
+        productName: product.productName ?? '',
+        code: product.code ?? '',
+        description: product.description ?? '',
+        categoryId: product.categoryId ?? 0,
+        subCategoryId: product.subCategoryId ?? 0,
+        brandId: product.brandId ?? 0,
+        colorId: product.colorId ?? 0,
+        quantity: product.quantity ?? 0,
+        price: product.price ?? 0,
+        hasDiscount: product.hasDiscount ?? false,
         discountPrice: product.discountPrice,
         weight: product.weight ?? '',
         size: product.size ?? '',
@@ -90,10 +90,9 @@ export function useProductEdit() {
   const hasDiscount = form.watch('hasDiscount')
 
   const { data: categories } = useGetCategoriesQuery()
-  const { data: subCategories } = useGetSubCategoriesQuery(
-    selectedCategoryId > 0 ? selectedCategoryId : undefined,
-    { skip: !selectedCategoryId || selectedCategoryId === 0 },
-  )
+  const { data: subCategories } = useGetSubCategoriesQuery(selectedCategoryId, {
+    skip: selectedCategoryId === 0,
+  })
   const { data: brandsData } = useGetBrandsQuery({ PageSize: 100 })
   const brands = brandsData?.data ?? []
 

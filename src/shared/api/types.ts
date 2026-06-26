@@ -41,35 +41,53 @@ export interface ProductImage {
   imageName: string
 }
 
+// Matches the actual /Product/get-products list response (data.products[])
 export interface Product {
   id: number
   productName: string
-  description: string
+  // from list endpoint
+  image?: string
+  color?: string
+  categoryId?: number
+  categoryName?: string
+  productInMyCart?: boolean
+  productInfoFromCart?: null
+  // common
   price: number
   hasDiscount: boolean
   discountPrice?: number
   quantity: number
-  code: string
+  // from get-product-by-id single endpoint
+  description?: string
+  code?: string
   weight?: string
   size?: string
-  brandId: number
+  brandId?: number
   brandName?: string
-  colorId: number
+  colorId?: number
   colorName?: string
-  subCategoryId: number
-  images: ProductImage[]
+  subCategoryId?: number
+  images?: ProductImage[]
 }
 
+export interface UserRole {
+  id: string
+  name: string
+}
+
+// Matches actual /UserProfile/get-user-profiles response
 export interface UserProfile {
   id: string
+  userId: string
+  userName?: string
   firstName: string
   lastName: string
-  userName?: string
   email: string
   phoneNumber: string
   dob: string
   image?: string
   role?: string
+  userRoles: UserRole[]
 }
 
 export interface Role {

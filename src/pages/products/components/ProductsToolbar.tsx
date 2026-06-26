@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
-import { Search, Plus } from 'lucide-react'
-import { Button } from '@/shared/ui/button'
+import { Search } from 'lucide-react'
 import { Input } from '@/shared/ui/input'
 import {
   Select,
@@ -52,13 +50,6 @@ export function ProductsToolbar({
           <SelectItem value="out">{t('products.outOfStock')}</SelectItem>
         </SelectContent>
       </Select>
-
-      <Button asChild className="sm:ml-auto gap-2">
-        <Link to="/products/create">
-          <Plus className="w-4 h-4" />
-          {t('products.addNew2')}
-        </Link>
-      </Button>
     </div>
   )
 }
