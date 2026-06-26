@@ -41,38 +41,38 @@ flowchart LR
 ## Фаза 3 — Системные компоненты (ДО страниц)
 - [x] ErrorBoundary, PageLoader, NotFoundPage(404), EmptyState, NetworkError, ConfirmDialog, ProtectedRoute(adminOnly), Toaster (docs/11)
 
-## Фаза 4 — Auth + Layout
+## Фаза 4 — Auth + Layoutz
 - [x] authApi (login) + authSlice + jwt-decode + проверка `role === 'Admin'` (docs/06)
 - [x] Страница `/login` по макету `design-export` (split, eye-toggle, only admin)
 - [x] `widgets/Sidebar` + `widgets/Header` (Topbar) + LangSwitcher + ThemeToggle (docs/04)
 - [x] AdminLayout (Sidebar+Header+Outlet) для всех роутов кроме `/login`; ProtectedRoute подключён
 
 ## Фаза 5 — Dashboard
-- [ ] productsApi, usersApi, categoriesApi, brandsApi, colorsApi (RTK Query)
-- [ ] 3 карточки (Products / Customers / Categories+Brands) — кликабельные
-- [ ] График recharts по товарам, переключается карточками
-- [ ] Top selling products (4–5 + See all → /products)
-- [ ] Recent Customers (username/email/role)
-- [ ] Top Products by Units Sold (скролл, невидимый скроллбар)
+- [x] productsApi, usersApi, categoriesApi, brandsApi, colorsApi (RTK Query)
+- [x] 3 карточки (Products / Customers / Categories+Brands) — кликабельные
+- [x] График recharts по товарам, переключается карточками
+- [x] Top selling products (4–5 + See all → /products)
+- [x] Recent Customers (username/email/role)
+- [x] Top Products by Units Sold (скролл, невидимый скроллбар)
 
 ## Фаза 6 — Users (Orders)
-- [ ] Таблица пользователей (get-user-profiles) + пагинация + поиск + фильтр (роль)
-- [ ] Чекбоксы строк + bulk-delete + ConfirmDialog
-- [ ] Add / Edit / Delete пользователя через модалки
-- [ ] Роли: get-user-roles, addrole/remove-role (если нужно)
+- [x] Таблица пользователей (get-user-profiles) + пагинация + поиск + фильтр (роль)
+- [x] Чекбоксы строк + bulk-delete + ConfirmDialog
+- [x] Add / Edit / Delete пользователя через модалки
+- [x] Роли: get-user-roles, addrole/remove-role (если нужно)
 
 ## Фаза 7 — Products
-- [ ] Список товаров (таблица по макету) + поиск/фильтр/пагинация
-- [ ] Страница `/products/create` (форма add-product: images, brand, color, name, desc, qty, weight, size, code, price, hasDiscount, discountPrice, subCategory)
-- [ ] Страница `/products/:id/edit` (update-product + add/delete image)
-- [ ] Модалки: Successfully add, Delete product, New color (add-color), Option — из макета
-- [ ] Выбор/добавление цвета и подкатегории внутри формы
+- [x] Список товаров (таблица по макету) + поиск/фильтр/пагинация
+- [x] Страница `/products/create` (форма add-product: images, brand, color, name, desc, qty, weight, size, code, price, hasDiscount, discountPrice, subCategory)
+- [x] Страница `/products/:id/edit` (update-product + add/delete image)
+- [x] Модалки: Successfully add, Delete product, New color (add-color), Option — из макета
+- [x] Выбор/добавление цвета и подкатегории внутри формы
 
 ## Фаза 8 — Other
-- [ ] `/categories` — список (get-categories) + add/edit/delete (multipart image) через модалки
-- [ ] `/brands` — список (get-brands) + add/edit/delete через модалки
-- [ ] `/banners` — дизайн по макету (в Swagger нет API баннеров → static; появится — добавить)
-- [ ] Подкатегории — CRUD (нужны для товаров): get/add/update/delete
+- [x] `/categories` — список (get-categories) + add/edit/delete (multipart image) через модалки
+- [x] `/brands` — список (get-brands) + add/edit/delete через модалки
+- [x] `/banners` — дизайн по макету (в Swagger нет API баннеров → static; появится — добавить)
+- [x] Подкатегории — CRUD (нужны для товаров): get/add/update/delete
 
 ## Фаза 9 — Полировка
 - [ ] Скелетоны/лоадеры везде, тосты на каждое действие

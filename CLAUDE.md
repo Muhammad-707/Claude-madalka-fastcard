@@ -210,10 +210,15 @@ VITE_DEFAULT_LANG=ru
 ---
 
 ## 📍 Последний чекпоинт
-- **Статус:** Фазы 1–4 завершены (Session 1, 2026-06-26).
-- **Что сделано:** Фаза 1 — Vite+TS+Tailwind+shadcn+baseApi+types+utils. Фаза 2 — authSlice, Redux store, i18n (ru/en/tj), Providers (Redux+Theme), router с lazy+Suspense, global ErrorBoundary. Фаза 3 — PageLoader, EmptyState, NetworkError, ConfirmDialog, NotFoundPage, ProtectedRoute, Toaster. Фаза 4 — authApi (login mutation), loginPage (split-design, eye-toggle, only Admin), Sidebar (logo+nav+Other expandable+mobile drawer), Header (search+ThemeToggle+LangSwitcher+bell+user dropdown+logout), AdminLayout. `type-check` ✅ `lint` ✅ 0 ошибок.
-- **Следующий шаг:** Фаза 5 — Dashboard (RTK Query API слайсы + 3 карточки + recharts график + Top selling + Recent customers + Top by units).
-- **Прошлая сессия:** нет (все в одной).
+- **Статус:** Фазы 1–8 завершены (Session 2, 2026-06-26).
+- **Что сделано:**
+  - Фаза 5 — Dashboard: productsApi, usersApi, categoriesApi, brandsApi, colorsApi; 3 карточки (Products/Customers/Categories+Brands, кликабельные); recharts AreaChart переключается по карточкам; TopSellingProducts, RecentCustomers, TopProductsByUnits (scrollbar-hidden).
+  - Фаза 6 — Users: таблица с пагинацией (URL ?page=N), поиск + debounce, фильтр по роли, чекбоксы + bulk-delete, AddUserDialog, EditUserDialog, ConfirmDialog.
+  - Фаза 7 — Products: список + поиск/фильтр/пагинация; `/products/create` (форма: images drag&drop, color selector с COLOR_MAP, brand/category/subcategory, price/discount/weight/size/code, SuccessDialog); `/products/:id/edit` (pre-fill, add/delete images).
+  - Фаза 8 — Other: `/categories` (grid 5col + add/edit/delete модалки + поиск); `/brands` (двухколонный layout, inline edit, add form); `/banners` (static design, два панели с upload зоной, без API).
+  - `type-check` ✅ `lint` ✅ 0 ошибок.
+- **Следующий шаг:** Фаза 9 — Полировка: скелетоны/лоадеры везде, тосты на каждое действие, mobile-проход (Sidebar drawer, таблицы → карточки), A11y, dark/light проверка, `type-check` + `lint` + `build`.
+- **Прошлая сессия:** SESSION-2026-06-26-01.md (Фазы 5–8 начало).
 
 ---
 

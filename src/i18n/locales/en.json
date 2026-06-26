@@ -107,7 +107,14 @@
   },
   "banner": {
     "title": "Banners",
-    "addBanner": "Add banner"
+    "addBanner": "Add banner",
+    "clickUpload": "Click to upload",
+    "orDrag": "or drag and drop",
+    "bannerTitle": "Banner title",
+    "bannerLink": "Banner link",
+    "noApiNote": "Banner API is not yet available. This page is a design preview.",
+    "mainSliders": "Main Sliders",
+    "bannerSection": "Banner Section"
   },
   "common": {
     "confirmDelete": "Are you sure you want to delete?",
