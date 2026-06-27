@@ -23,8 +23,8 @@ export default function ProductEditPage() {
   const { t } = useTranslation()
   const {
     form,
-    product,
     productLoading,
+    initialized,
     saving,
     newImages,
     setNewImages,
@@ -34,6 +34,7 @@ export default function ProductEditPage() {
     hasDiscount,
     onSubmit,
     handleDeleteImage,
+    normalizedImages,
   } = useProductEdit()
 
   const {
@@ -46,8 +47,9 @@ export default function ProductEditPage() {
   } = form
 
   const colorId = watch('colorId')
+  const selectedCategoryId = watch('categoryId')
 
-  if (productLoading) return <PageLoader />
+  if (productLoading || !initialized) return <PageLoader />
 
   return (
     <div className="p-6">
@@ -136,7 +138,7 @@ export default function ProductEditPage() {
                       <Select
                         value={field.value > 0 ? String(field.value) : ''}
                         onValueChange={(v) => field.onChange(Number(v))}
-                        disabled={subCategories.length === 0}
+                        disabled={selectedCategoryId === 0}
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Sub category" />
@@ -241,7 +243,7 @@ export default function ProductEditPage() {
               <ImageUploader
                 newFiles={newImages}
                 onFilesChange={setNewImages}
-                existingImages={product?.images ?? []}
+                existingImages={normalizedImages}
                 onDeleteExisting={handleDeleteImage}
               />
             </div>

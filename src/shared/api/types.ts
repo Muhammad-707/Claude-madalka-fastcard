@@ -38,7 +38,8 @@ export interface Category {
 
 export interface ProductImage {
   id: number
-  imageName: string
+  imageName?: string
+  images?: string // Exact field name from /Product/get-product-by-id
 }
 
 // Matches the actual /Product/get-products list response (data.products[])
@@ -47,7 +48,6 @@ export interface Product {
   productName: string
   // from list endpoint
   image?: string
-  color?: string
   categoryId?: number
   categoryName?: string
   productInMyCart?: boolean
@@ -62,10 +62,8 @@ export interface Product {
   code?: string
   weight?: string
   size?: string
-  brandId?: number
-  brandName?: string
-  colorId?: number
-  colorName?: string
+  brand?: string // API returns "Lenovo" not brandId
+  color?: string // API returns "red" not colorId
   subCategoryId?: number
   images?: ProductImage[]
 }

@@ -27,6 +27,13 @@ export const usersApi = baseApi.injectEndpoints({
       }),
       providesTags: ['User'],
     }),
+    // GET /UserProfile/get-user-profile-by-id?id={string}
+    // Used to fetch full profile data (including dob, image) before opening the edit modal.
+    getUserById: b.query<UserProfile, string>({
+      query: (id) => ({ url: '/UserProfile/get-user-profile-by-id', params: { id } }),
+      transformResponse: (r: { data: UserProfile | null }) => r.data!,
+      providesTags: (_r, _e, id) => [{ type: 'User' as const, id }],
+    }),
     updateUser: b.mutation<unknown, FormData>({
       query: (body) => ({ url: '/UserProfile/update-user-profile', method: 'PUT', body }),
       invalidatesTags: ['User'],
@@ -57,6 +64,7 @@ export const usersApi = baseApi.injectEndpoints({
 
 export const {
   useGetUsersQuery,
+  useGetUserByIdQuery,
   useUpdateUserMutation,
   useDeleteUserMutation,
   useGetRolesQuery,

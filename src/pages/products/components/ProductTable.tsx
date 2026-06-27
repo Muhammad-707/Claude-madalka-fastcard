@@ -137,7 +137,8 @@ export function ProductTable({
               </th>
               <th className="pb-3 pr-4 text-left font-medium">{t('products.product')}</th>
               <th className="pb-3 pr-4 text-left font-medium">{t('products.inventory')}</th>
-              <th className="pb-3 pr-4 text-left font-medium">{t('form.brand')}</th>
+              {/* TODO: replace with Brand column once brandName is reliably returned by the list API */}
+              <th className="pb-3 pr-4 text-left font-medium">{t('form.category')}</th>
               <th className="pb-3 pr-4 text-left font-medium">{t('products.price')}</th>
               <th className="pb-3 text-right font-medium">{t('products.action')}</th>
             </tr>
@@ -188,7 +189,8 @@ export function ProductTable({
                     )}
                   </td>
                   <td className="py-3 pr-4 text-muted-foreground">
-                    {product.brandName ?? '—'}
+                    {/* categoryName is reliably present in the list response; brandName is not */}
+                    {product.categoryName ?? '—'}
                   </td>
                   <td className="py-3 pr-4 font-medium">
                     ${product.price.toFixed(2)}

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/shared/lib/utils'
 import { Sheet, SheetContent } from '@/shared/ui/sheet'
+import logo from '@/assets/Group 1116606595 (3).png'
 
 const OTHER_PATHS = ['/categories', '/brands', '/sub-categories']
 
@@ -31,11 +32,8 @@ function SidebarContent() {
   return (
     <div className="flex flex-col h-full" style={{ background: 'hsl(var(--sidebar))' }}>
       {/* Logo */}
-      <div className="flex items-center gap-3 h-16 px-6 shrink-0 border-b border-sidebar-border">
-        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-yellow-400/20">
-          <ShoppingCart className="h-5 w-5 text-yellow-400" strokeWidth={2.2} />
-        </div>
-        <span className="text-white text-lg font-bold italic tracking-wide">fastcart</span>
+      <div className="flex items-center h-16 px-6 shrink-0 border-b border-sidebar-border">
+        <img src={logo} alt="fastcart" className="h-12 object-contain" />
       </div>
 
       {/* Nav */}

@@ -28,7 +28,7 @@ export function TopSellingProducts({ products, isLoading }: TopSellingProductsPr
 
       <div className="space-y-4 flex-1">
         {isLoading
-          ? Array.from({ length: 5 }).map((_, i) => (
+          ? Array.from({ length: 6 }).map((_, i) => (
               <Skeleton key={i} className="h-10 rounded-lg" />
             ))
           : products.map((product) => (

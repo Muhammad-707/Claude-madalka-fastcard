@@ -38,7 +38,7 @@ export function useDashboardPage() {
   const totalCategories = categories?.length ?? 0
   const totalBrands = brandsData?.totalRecord ?? 0
 
-  const topProducts = (productsData?.data ?? []).slice(0, 5)
+  const topProducts = (productsData?.data ?? []).slice(0, 6)
   const recentUsers = usersData?.data ?? []
   const allProducts = productsData?.data ?? []
 
