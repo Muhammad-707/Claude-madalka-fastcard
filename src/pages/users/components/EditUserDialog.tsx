@@ -14,7 +14,20 @@ import {
 import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input'
 import { Label } from '@/shared/ui/label'
-import { useUpdateUserMutation, useGetUserByIdQuery } from '@/shared/api/usersApi'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/select'
+import {
+  useUpdateUserMutation,
+  useGetUserByIdQuery,
+  useGetRolesQuery,
+  useAddRoleMutation,
+  useRemoveRoleMutation,
+} from '@/shared/api/usersApi'
 import { getImageUrl } from '@/shared/lib/getImageUrl'
 import type { UserProfile } from '@/shared/api/types'
 
@@ -36,20 +49,21 @@ interface EditUserDialogProps {
 export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
   const { t } = useTranslation()
   const [updateUser, { isLoading: saving }] = useUpdateUserMutation()
+  const [addRole, { isLoading: addingRole }] = useAddRoleMutation()
+  const [removeRole, { isLoading: removingRole }] = useRemoveRoleMutation()
+  const { data: roles = [], isLoading: loadingRoles } = useGetRolesQuery()
+
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
+  const [selectedRoleId, setSelectedRoleId] = useState('')
+  const [initialRoleId, setInitialRoleId] = useState('')
 
-  // Derive the user's id string — userId is the ASP.NET Identity GUID
   const userId = user ? (user.userId || user.id) : ''
 
-  // Fetch full profile from the detail endpoint to guarantee all fields are present.
-  // GET /UserProfile/get-user-profile-by-id?id={string}
   const {
     data: fullUser,
     isLoading: loadingUser,
-  } = useGetUserByIdQuery(userId, {
-    skip: !userId,
-  })
+  } = useGetUserByIdQuery(userId, { skip: !userId })
 
   const {
     register,
@@ -67,8 +81,7 @@ export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
     },
   })
 
-  // When the full user data arrives (or the user prop changes), reset the form with real values.
-  // Dob from API may be ISO-8601 datetime ("2000-01-15T00:00:00") — extract YYYY-MM-DD for <input type="date">.
+  // Populate form fields when full user data loads
   useEffect(() => {
     const source = fullUser ?? user
     if (source) {
@@ -84,14 +97,28 @@ export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
     }
   }, [fullUser, user, reset])
 
+  // Derive the current role ID from the loaded user data and the roles list
+  // Match by name (robust against stale IDs in userRoles list endpoint)
+  useEffect(() => {
+    if (roles.length === 0) return
+    const source = fullUser ?? user
+    if (!source) return
+
+    const currentRoleName =
+      source.userRoles?.[0]?.name ?? source.role ?? ''
+
+    const matched = roles.find(
+      (r) => r.name.toLowerCase() === currentRoleName.toLowerCase(),
+    )
+    const roleId = matched?.id ?? ''
+    setSelectedRoleId(roleId)
+    setInitialRoleId(roleId)
+  }, [fullUser, user, roles])
+
   function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0] ?? null
     setImageFile(file)
-    if (file) {
-      setImagePreview(URL.createObjectURL(file))
-    } else {
-      setImagePreview(null)
-    }
+    setImagePreview(file ? URL.createObjectURL(file) : null)
   }
 
   function handleClose() {
@@ -103,10 +130,6 @@ export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
   async function onSubmit(values: EditUserFormValues) {
     if (!user) return
 
-    // PUT /UserProfile/update-user-profile
-    // multipart/form-data fields: Image (binary), FirstName, LastName, Email, PhoneNumber, Dob
-    // NOTE: swagger does not include an Id field — the backend identifies the user from the JWT.
-    // We still pass Id so the backend can use it if it supports it.
     const fd = new FormData()
     fd.append('Id', userId)
     fd.append('FirstName', values.firstName)
@@ -114,8 +137,6 @@ export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
     fd.append('Email', values.email)
     fd.append('PhoneNumber', values.phoneNumber)
     fd.append('Dob', values.dob)
-
-    // Image is required by swagger — send new file or an empty blob to keep existing photo
     if (imageFile) {
       fd.append('Image', imageFile)
     } else {
@@ -123,16 +144,28 @@ export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
     }
 
     try {
+      // Update profile first
       await updateUser(fd).unwrap()
+
+      // Then update role if it changed
+      if (selectedRoleId !== initialRoleId) {
+        if (initialRoleId) {
+          await removeRole({ UserId: userId, RoleId: initialRoleId }).unwrap()
+        }
+        if (selectedRoleId) {
+          await addRole({ UserId: userId, RoleId: selectedRoleId }).unwrap()
+        }
+        setInitialRoleId(selectedRoleId)
+      }
+
       toast.success(t('common.successUpdated'))
       handleClose()
     } catch {
       toast.error(t('errors.somethingWrong'))
-      // Do NOT close the modal on error so the user can retry
     }
   }
 
-  // Show the newly selected preview, or the existing avatar from the full user data
+  const isSaving = saving || addingRole || removingRole
   const existingImage = (fullUser ?? user)?.image
   const currentImageSrc = imagePreview ?? (existingImage ? getImageUrl(existingImage) : null)
 
@@ -206,19 +239,38 @@ export function EditUserDialog({ user, onClose }: EditUserDialogProps) {
 
             <div className="space-y-1.5">
               <Label htmlFor="edit-dob">{t('users.dob')}</Label>
-              {/* input type="date" requires YYYY-MM-DD format — we split on 'T' above */}
               <Input id="edit-dob" type="date" {...register('dob')} />
               {errors.dob && (
                 <p className="text-xs text-destructive">{t(errors.dob.message ?? 'errors.required')}</p>
               )}
             </div>
 
+            <div className="space-y-1.5">
+              <Label>{t('users.role')}</Label>
+              <Select
+                value={selectedRoleId}
+                onValueChange={setSelectedRoleId}
+                disabled={loadingRoles}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder={t('users.selectRole')} />
+                </SelectTrigger>
+                <SelectContent>
+                  {roles.map((role) => (
+                    <SelectItem key={role.id} value={role.id}>
+                      {role.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="flex justify-end gap-2 pt-2">
               <Button type="button" variant="outline" onClick={handleClose}>
                 {t('form.cancel')}
               </Button>
-              <Button type="submit" disabled={saving}>
-                {saving && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+              <Button type="submit" disabled={isSaving}>
+                {isSaving && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
                 {t('form.save')}
               </Button>
             </div>

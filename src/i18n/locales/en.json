@@ -43,7 +43,8 @@
     "allRoles": "All roles",
     "dob": "Date of birth",
     "photo": "Photo",
-    "photoHint": "Leave empty to keep current photo"
+    "photoHint": "Leave empty to keep current photo",
+    "selectRole": "Select role"
   },
   "products": {
     "title": "Products",
