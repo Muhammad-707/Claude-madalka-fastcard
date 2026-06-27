@@ -1,13 +1,15 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Eye, EyeOff, ShoppingCart, Loader2 } from 'lucide-react'
+import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { useAppSelector } from '@/app/hooks'
 import { selectIsAdmin } from '@/features/auth/model/authSlice'
 import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/shared/ui/form'
 import { useLoginPage } from './hooks/useLoginPage'
+
+import img1 from "@/assets/Group 1116606595 (3).png"
 
 export default function LoginPage() {
   const { t } = useTranslation()
@@ -23,7 +25,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex">
       {/* Left panel — dark gradient */}
       <div
-        className="hidden lg:flex lg:w-[53%] flex-col justify-end p-12 relative overflow-hidden"
+        className="hidden lg:flex lg:w-[53%] flex-col justify-center p-16 lg:p-24 relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, #1d3a4a 0%, #0f1e35 45%, #07111f 100%)',
         }}
@@ -31,20 +33,14 @@ export default function LoginPage() {
         {/* Subtle glow effect */}
         <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-10 bg-blue-400 blur-3xl pointer-events-none" />
         <div className="relative z-10">
-          <p className="text-white/75 text-lg mb-5 leading-relaxed whitespace-pre-line">
+          <p className="text-white text-[22px] font-normal mb-4 tracking-wide whitespace-nowrap">
             {t('auth.welcome')}
           </p>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-400/20">
-              <ShoppingCart className="h-7 w-7 text-yellow-400" strokeWidth={2} />
-            </div>
-            <span
-              className="text-white text-3xl font-bold tracking-wide"
-              style={{ fontStyle: 'italic', letterSpacing: '0.02em' }}
-            >
-              fastcart
-            </span>
-          </div>
+          <img
+            src={img1}
+            alt="fastcart"
+            className="w-[350px] object-contain"
+          />
         </div>
       </div>
 
