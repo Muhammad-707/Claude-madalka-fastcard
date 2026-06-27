@@ -17,20 +17,7 @@ export const productsApi = baseApi.injectEndpoints({
           //   errors, statusCode }
           const inner = json.data as Record<string, unknown> | null
           const products = inner?.products
-          // Enrich products with brandName from the brands array in the same response
-          const rawBrands = inner && Array.isArray(inner.brands)
-            ? (inner.brands as Array<{ id: number; brandName: string }>)
-            : []
-          const brandMap: Record<number, string> = {}
-          for (const b of rawBrands) {
-            if (typeof b.id === 'number') brandMap[b.id] = b.brandName
-          }
-          const enriched: Product[] = Array.isArray(products)
-            ? (products as Product[]).map((p) => ({
-                ...p,
-                brandName: p.brandName ?? (p.brandId != null ? brandMap[p.brandId] : undefined),
-              }))
-            : []
+          const enriched: Product[] = Array.isArray(products) ? (products as Product[]) : []
           return {
             pageNumber: (json.pageNumber as number) ?? 1,
             pageSize: (json.pageSize as number) ?? 10,
